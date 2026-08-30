@@ -1,0 +1,6 @@
+{"schema_version":"1.0","case_id":"conflicting_states","transaction_reference":"TX-SYN-CONFLICT","description":"Payment state is failed while CBA says posted","records":[
+  {"source_system":"payment_service","record_id":"pay-conf-1","timestamp":"2026-08-20T13:00:00Z","event_type":"CBA_REQUEST","payload":{"state":"SUBMITTED"}},
+  {"source_system":"payment_service","record_id":"pay-conf-2","timestamp":"2026-08-20T13:00:31Z","event_type":"PAYMENT_STATE","payload":{"state":"FAILED","reason_code":"DOWNSTREAM_TIMEOUT"}},
+  {"source_system":"mock_cba","record_id":"cba-conf-1","timestamp":"2026-08-20T13:00:29Z","event_type":"CBA_RESPONSE","payload":{"state":"POSTED","response_code":"SUCCESS"}}
+]}
+

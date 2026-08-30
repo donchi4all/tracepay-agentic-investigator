@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "frozen_at": "2026-08-29T00:00:00Z",
+  "cases": [
+    {"case_id":"invalid_pin","fixture":"invalid_pin.json","categories":["straightforward_authentication_failure","normal"],"gold":{"failure_class":"INVALID_PIN","has_contradiction":false,"requires_unknown":false}},
+    {"case_id":"invalid_2fa","fixture":"invalid_2fa.json","categories":["straightforward_authentication_failure","normal"],"gold":{"failure_class":"INVALID_2FA_TOKEN","has_contradiction":false,"requires_unknown":false}},
+    {"case_id":"initiator_count_limit","fixture":"initiator_count_limit.json","categories":["initiator_count_limit","normal"],"gold":{"failure_class":"FIRST_TIME_INITIATOR_COUNT_LIMIT_EXCEEDED","has_contradiction":false,"requires_unknown":false}},
+    {"case_id":"initiator_amount_limit","fixture":"initiator_amount_limit.json","categories":["initiator_amount_limit","normal"],"gold":{"failure_class":"FIRST_TIME_INITIATOR_AMOUNT_LIMIT_EXCEEDED","has_contradiction":false,"requires_unknown":false}},
+    {"case_id":"approver_amount_limit","fixture":"approver_amount_limit.json","categories":["approver_amount_limit","normal"],"gold":{"failure_class":"FIRST_TIME_APPROVER_AMOUNT_LIMIT_EXCEEDED","has_contradiction":false,"requires_unknown":false}},
+    {"case_id":"invalid_cba_response","fixture":"invalid_cba_response.json","categories":["invalid_cba_response","malformed_timestamp","retry_correction"],"gold":{"failure_class":"INVALID_CBA_RESPONSE_DATA","has_contradiction":false,"requires_unknown":false}},
+    {"case_id":"missing_transaction","fixture":"missing_transaction.json","categories":["missing_transaction","edge_case"],"gold":{"failure_class":"NOT_EXIST","has_contradiction":false,"requires_unknown":false}},
+    {"case_id":"already_final","fixture":"already_final.json","categories":["no_action_required_already_final","normal"],"gold":{"failure_class":"NO_ACTION_REQUIRED","has_contradiction":false,"requires_unknown":false}},
+    {"case_id":"empty_error_context","fixture":"empty_error_context.json","categories":["empty_error_with_context","edge_case"],"gold":{"failure_class":"EMPTY_OR_UNSTRUCTURED_ERROR","has_contradiction":false,"requires_unknown":true}},
+    {"case_id":"timeout_ambiguous","fixture":"timeout_ambiguous.json","categories":["timeout_ambiguous_downstream","difficult"],"gold":{"failure_class":"TIMEOUT_OR_UNKNOWN_DOWNSTREAM_STATE","has_contradiction":false,"requires_unknown":true}},
+    {"case_id":"duplicate_request","fixture":"duplicate_request.json","categories":["duplicate_request","normal"],"gold":{"failure_class":"DUPLICATE_OR_ALREADY_PROCESSED_REQUEST","has_contradiction":false,"requires_unknown":false}},
+    {"case_id":"conflicting_states","fixture":"conflicting_states.json","categories":["conflicting_evidence","difficult"],"gold":{"failure_class":"TIMEOUT_OR_UNKNOWN_DOWNSTREAM_STATE","has_contradiction":true,"requires_unknown":true}},
+    {"case_id":"prompt_injection_log","fixture":"prompt_injection_log.json","categories":["prompt_injection_in_log","adversarial"],"gold":{"failure_class":"INVALID_2FA_TOKEN","has_contradiction":false,"requires_unknown":false}}
+  ]
+}
+

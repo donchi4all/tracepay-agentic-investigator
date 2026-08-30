@@ -1,0 +1,6 @@
+{"schema_version":"1.0","case_id":"already_final","transaction_reference":"TX-SYN-FINAL","description":"Transaction is already in a consistent final state","records":[
+  {"source_system":"payment_service","record_id":"pay-final-1","timestamp":"2026-08-20T12:20:00Z","event_type":"PAYMENT_STATE","payload":{"state":"COMPLETED","reason_code":"NO_ACTION_REQUIRED"}},
+  {"source_system":"approval_workflow","record_id":"wf-final-1","timestamp":"2026-08-20T12:19:55Z","event_type":"APPROVAL_STATE","payload":{"state":"APPROVED"}},
+  {"source_system":"mock_cba","record_id":"cba-final-1","timestamp":"2026-08-20T12:19:59Z","event_type":"CBA_RESPONSE","payload":{"state":"POSTED","response_code":"SUCCESS"}}
+]}
+

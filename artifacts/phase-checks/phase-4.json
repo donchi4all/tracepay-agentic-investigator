@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "evidence_contracts_present": true,
+    "financial_actions_zero": true,
+    "json_report": true,
+    "markdown_report": true,
+    "typed_claim_contract": true
+  },
+  "details": {
+    "sample_report": "artifacts/reports/invalid_pin.json"
+  },
+  "phase": "4-agent-solution",
+  "status": "PASS"
+}

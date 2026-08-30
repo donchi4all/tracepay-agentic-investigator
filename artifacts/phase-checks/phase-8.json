@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "claims_link_to_artifacts": true,
+    "five_minute_demo": true,
+    "limitations_disclosed": true,
+    "six_category_scorecard": true,
+    "submission_files_listed": true
+  },
+  "details": {
+    "checklist": "docs/SUBMISSION_CHECKLIST.md",
+    "demo": "docs/DEMO_SCRIPT.md"
+  },
+  "phase": "8-submission-video",
+  "status": "PASS"
+}

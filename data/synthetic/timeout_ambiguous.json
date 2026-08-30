@@ -1,0 +1,5 @@
+{"schema_version":"1.0","case_id":"timeout_ambiguous","transaction_reference":"TX-SYN-TIMEOUT","description":"Payment service times out and downstream result is unknown","records":[
+  {"source_system":"payment_service","record_id":"pay-timeout-1","timestamp":"2026-08-20T12:40:00Z","event_type":"CBA_REQUEST","payload":{"state":"SUBMITTED","request_id":"REQ-SYN-TIMEOUT"}},
+  {"source_system":"payment_service","record_id":"pay-timeout-2","timestamp":"2026-08-20T12:40:30Z","event_type":"DOWNSTREAM_TIMEOUT","payload":{"state":"PENDING_RECONCILIATION","error_code":"TIMEOUT_OR_UNKNOWN_DOWNSTREAM_STATE"}}
+]}
+

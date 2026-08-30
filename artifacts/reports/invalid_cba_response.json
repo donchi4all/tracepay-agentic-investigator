@@ -1,0 +1,117 @@
+{
+  "case_id": "invalid_cba_response",
+  "claims": [
+    {
+      "claim_id": "CLM-ROOT",
+      "classification": "INFERENCE",
+      "confidence": 0.98,
+      "contradicting_evidence_ids": [],
+      "statement": "The transaction failed because the mock CBA response did not satisfy the response contract.",
+      "supporting_evidence_ids": [
+        "EV-invalid_cba_response-002",
+        "EV-invalid_cba_response-003"
+      ],
+      "verification_status": "VERIFIED"
+    }
+  ],
+  "confidence": 0.98,
+  "contradictions": [],
+  "executive_summary": "The transaction failed because the mock CBA response did not satisfy the response contract. The conclusion is limited to the cited synthetic evidence.",
+  "generated_at": "2026-08-29T00:00:00Z",
+  "hypotheses": [
+    {
+      "confidence": 0.98,
+      "evidence_ids": [
+        "EV-invalid_cba_response-002",
+        "EV-invalid_cba_response-003"
+      ],
+      "failure_class": "INVALID_CBA_RESPONSE_DATA",
+      "rationale": "Selected from correlated structural states and allow-listed failure-code fields."
+    }
+  ],
+  "impact": "Synthetic investigation only. No real customer, account, or financial impact is asserted.",
+  "metadata": {
+    "financial_actions_executed": 0,
+    "mode": "final",
+    "provider": "deterministic_local",
+    "security_findings": []
+  },
+  "missing_sources": [
+    "auth_service",
+    "approval_workflow"
+  ],
+  "primary_failure_class": "INVALID_CBA_RESPONSE_DATA",
+  "recommendations": [
+    {
+      "action": "Have a payment operations engineer review the cited evidence before any operational follow-up.",
+      "approval": "REQUIRES_HUMAN_APPROVAL",
+      "rationale": "TracePay is advisory and cannot change financial state."
+    },
+    {
+      "action": "Route the diagnosed class to the owning support team; any payment-state action requires separate review.",
+      "approval": "REQUIRES_HUMAN_APPROVAL",
+      "rationale": "TracePay is advisory and cannot change financial state."
+    }
+  ],
+  "rejected_claims": [],
+  "safety_notice": "REQUIRES_HUMAN_APPROVAL: TracePay is read-only. It did not and cannot execute a payment, retry, reversal, block, approval, customer contact, or state change.",
+  "schema_version": "1.0",
+  "timeline": [
+    {
+      "event_type": "CBA_REQUEST",
+      "evidence_id": "EV-invalid_cba_response-001",
+      "integrity": "sha256:b6cc5aaeae026b000dc68b3705467a3b1a78753a44a9e84fea04bec3a71239bf#record=1",
+      "record_id": "pay-cba-1",
+      "sanitized_payload": {
+        "state": "SUBMITTED"
+      },
+      "source_system": "payment_service",
+      "timestamp": "2026-08-20T12:00:00Z",
+      "transaction_reference": "TX-SYN-CBA"
+    },
+    {
+      "event_type": "CBA_RESPONSE",
+      "evidence_id": "EV-invalid_cba_response-002",
+      "integrity": "sha256:b6cc5aaeae026b000dc68b3705467a3b1a78753a44a9e84fea04bec3a71239bf#record=2",
+      "record_id": "cba-bad-1",
+      "sanitized_payload": {
+        "error_code": "INVALID_CBA_RESPONSE_DATA",
+        "response_shape": "missing_required_status",
+        "state": "REJECTED"
+      },
+      "source_system": "mock_cba",
+      "timestamp": "2026-08-20T12:00:04Z",
+      "transaction_reference": "TX-SYN-CBA"
+    },
+    {
+      "event_type": "PAYMENT_STATE",
+      "evidence_id": "EV-invalid_cba_response-003",
+      "integrity": "sha256:b6cc5aaeae026b000dc68b3705467a3b1a78753a44a9e84fea04bec3a71239bf#record=3",
+      "record_id": "pay-cba-2",
+      "sanitized_payload": {
+        "reason_code": "INVALID_CBA_RESPONSE_DATA",
+        "state": "FAILED"
+      },
+      "source_system": "payment_service",
+      "timestamp": "2026-08-20T12:00:05Z",
+      "transaction_reference": "TX-SYN-CBA"
+    },
+    {
+      "event_type": "SEARCH_RESULT",
+      "evidence_id": "EV-invalid_cba_response-SEARCH",
+      "integrity": "sha256:b6cc5aaeae026b000dc68b3705467a3b1a78753a44a9e84fea04bec3a71239bf",
+      "record_id": "search-invalid_cba_response",
+      "sanitized_payload": {
+        "case_id": "invalid_cba_response",
+        "matched_records": 3,
+        "read_only": true
+      },
+      "source_system": "fixture_repository",
+      "timestamp": "2026-08-29T00:00:00Z",
+      "transaction_reference": "TX-SYN-CBA"
+    }
+  ],
+  "trajectory_path": "trajectories/invalid_cba_response.jsonl",
+  "transaction_reference": "TX-SYN-CBA",
+  "unknowns": []
+}

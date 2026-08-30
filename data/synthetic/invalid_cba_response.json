@@ -1,0 +1,6 @@
+{"schema_version":"1.0","case_id":"invalid_cba_response","transaction_reference":"TX-SYN-CBA","description":"CBA returns a malformed response; timestamp fallback exercises correction","records":[
+  {"source_system":"payment_service","record_id":"pay-cba-1","timestamp":"2026-08-20T12:00:00Z","event_type":"CBA_REQUEST","payload":{"state":"SUBMITTED"}},
+  {"source_system":"mock_cba","record_id":"cba-bad-1","timestamp":"not-a-timestamp","received_at":"2026-08-20T12:00:04Z","event_type":"CBA_RESPONSE","payload":{"state":"REJECTED","error_code":"INVALID_CBA_RESPONSE_DATA","response_shape":"missing_required_status"}},
+  {"source_system":"payment_service","record_id":"pay-cba-2","timestamp":"2026-08-20T12:00:05Z","event_type":"PAYMENT_STATE","payload":{"state":"FAILED","reason_code":"INVALID_CBA_RESPONSE_DATA"}}
+]}
+

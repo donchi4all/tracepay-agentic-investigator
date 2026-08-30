@@ -1,0 +1,65 @@
+{
+  "checks": {
+    "at_least_12_cases": true,
+    "dataset_valid": true,
+    "metrics_predeclared": true,
+    "rubric_frozen": true,
+    "synthetic_only": true
+  },
+  "details": {
+    "case_count": 13,
+    "categories_present": [
+      "adversarial",
+      "approver_amount_limit",
+      "conflicting_evidence",
+      "difficult",
+      "duplicate_request",
+      "edge_case",
+      "empty_error_with_context",
+      "initiator_amount_limit",
+      "initiator_count_limit",
+      "invalid_cba_response",
+      "malformed_timestamp",
+      "missing_transaction",
+      "no_action_required_already_final",
+      "normal",
+      "prompt_injection_in_log",
+      "retry_correction",
+      "straightforward_authentication_failure",
+      "timeout_ambiguous_downstream"
+    ],
+    "errors": [],
+    "failure_classes_present": [
+      "DUPLICATE_OR_ALREADY_PROCESSED_REQUEST",
+      "EMPTY_OR_UNSTRUCTURED_ERROR",
+      "FIRST_TIME_APPROVER_AMOUNT_LIMIT_EXCEEDED",
+      "FIRST_TIME_INITIATOR_AMOUNT_LIMIT_EXCEEDED",
+      "FIRST_TIME_INITIATOR_COUNT_LIMIT_EXCEEDED",
+      "INVALID_2FA_TOKEN",
+      "INVALID_CBA_RESPONSE_DATA",
+      "INVALID_PIN",
+      "NOT_EXIST",
+      "NO_ACTION_REQUIRED",
+      "TIMEOUT_OR_UNKNOWN_DOWNSTREAM_STATE"
+    ],
+    "fixture_hashes": {
+      "already_final": "sha256:c5d64828ce34af6a6163c6590d2c841f8ef8de6eac6b00bc12a4dbbe0fe8f542",
+      "approver_amount_limit": "sha256:afed2b66263602e15529733ef46667d8a33fad0db837c881b377b997971c4917",
+      "conflicting_states": "sha256:e3d1ccccd8dbbfce8768bec6173cdf49bdfa4fc1b680b1c3ff312ec2700883af",
+      "duplicate_request": "sha256:40785adbae979abf9f2b8cfdff9435a9299fa09dbe85f9f645021a61ec94b33b",
+      "empty_error_context": "sha256:48d51ea1cc1bdbb436b3c59f36c575d1b4f4c2e92c6b39fff63aeca8385a1faa",
+      "initiator_amount_limit": "sha256:63711e156f44d18ed0f0e05adddc2984ea04500a5720ed1cd7911d1afcdacaa3",
+      "initiator_count_limit": "sha256:032889aa6f10069a5af0afbe377f1139a7788621e1efaef8b40d24732f94bc76",
+      "invalid_2fa": "sha256:dd4c4b56457a96ca494fd724f7c83072b230f9d3a29a9f6a82c748e667e365d2",
+      "invalid_cba_response": "sha256:b6cc5aaeae026b000dc68b3705467a3b1a78753a44a9e84fea04bec3a71239bf",
+      "invalid_pin": "sha256:efad3e96cf477607aca88b06bf7ea6c6534cd8240fe6b29418c66c5b630645ad",
+      "missing_transaction": "sha256:899eca28a8ecf2c3ebb13523eae5381bccfdc961ecfce20abf6ada4d333cc431",
+      "prompt_injection_log": "sha256:6ee7be7ab252e2e8c8d6b5ded44c11c9d914eef602610393e76ffe030f93dbd1",
+      "timeout_ambiguous": "sha256:f6b18699e937c782a84e6f6232923d03e28ba1164f394f583cae2416f6e23a8b"
+    },
+    "synthetic_only": true,
+    "valid": true
+  },
+  "phase": "2-evaluation-first",
+  "status": "PASS"
+}

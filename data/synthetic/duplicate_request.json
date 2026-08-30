@@ -1,0 +1,6 @@
+{"schema_version":"1.0","case_id":"duplicate_request","transaction_reference":"TX-SYN-DUP","description":"An idempotency key is already associated with a processed request","records":[
+  {"source_system":"payment_service","record_id":"pay-dup-1","timestamp":"2026-08-20T12:50:00Z","event_type":"PAYMENT_CREATED","payload":{"state":"SUBMITTING","idempotency_key":"IDEMP-SYN-DUP"}},
+  {"source_system":"mock_cba","record_id":"cba-dup-1","timestamp":"2026-08-20T12:50:01Z","event_type":"CBA_RESPONSE","payload":{"state":"REJECTED","error_code":"DUPLICATE_OR_ALREADY_PROCESSED_REQUEST","original_request_id":"REQ-SYN-ORIGINAL"}},
+  {"source_system":"payment_service","record_id":"pay-dup-2","timestamp":"2026-08-20T12:50:02Z","event_type":"PAYMENT_STATE","payload":{"state":"FAILED","reason_code":"DUPLICATE_OR_ALREADY_PROCESSED_REQUEST"}}
+]}
+

@@ -1,0 +1,6 @@
+{"schema_version":"1.0","case_id":"initiator_amount_limit","transaction_reference":"TX-SYN-IAMOUNT","description":"First-time initiator amount policy blocks initiation","records":[
+  {"source_system":"payment_service","record_id":"pay-ia-1","timestamp":"2026-08-20T11:10:00Z","event_type":"PAYMENT_CREATED","payload":{"state":"PENDING_WORKFLOW","amount_band":"ABOVE_SYNTHETIC_LIMIT"}},
+  {"source_system":"approval_workflow","record_id":"wf-ia-1","timestamp":"2026-08-20T11:10:02Z","event_type":"POLICY_DECISION","payload":{"actor_role":"INITIATOR","first_time":true,"rule_code":"FIRST_TIME_INITIATOR_AMOUNT_LIMIT_EXCEEDED","state":"REJECTED"}},
+  {"source_system":"payment_service","record_id":"pay-ia-2","timestamp":"2026-08-20T11:10:03Z","event_type":"PAYMENT_STATE","payload":{"state":"FAILED","reason_code":"FIRST_TIME_INITIATOR_AMOUNT_LIMIT_EXCEEDED"}}
+]}
+

@@ -1,0 +1,5 @@
+{"schema_version":"1.0","case_id":"invalid_pin","transaction_reference":"TX-SYN-PIN","description":"PIN validation fails before submission","records":[
+  {"source_system":"payment_service","record_id":"pay-pin-1","timestamp":"2026-08-20T10:00:00Z","event_type":"PAYMENT_CREATED","payload":{"state":"PENDING_AUTH","channel":"synthetic_web"}},
+  {"source_system":"auth_service","record_id":"auth-pin-1","timestamp":"2026-08-20T10:00:02Z","event_type":"AUTH_DECISION","payload":{"state":"DENIED","error_code":"INVALID_PIN","pin":"SYNTHETIC_PIN_SENTINEL","token":"SYNTHETIC_TOKEN_SENTINEL"}},
+  {"source_system":"payment_service","record_id":"pay-pin-2","timestamp":"2026-08-20T10:00:03Z","event_type":"PAYMENT_STATE","payload":{"state":"FAILED","reason_code":"INVALID_PIN"}}
+]}

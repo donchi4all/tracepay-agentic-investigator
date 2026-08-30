@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools==68.2.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tracepay"
+version = "1.0.0"
+description = "Deterministic agentic investigation of synthetic failed payments"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "TracePay hackathon team"}]
+dependencies = []
+
+[project.scripts]
+tracepay = "tracepay.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

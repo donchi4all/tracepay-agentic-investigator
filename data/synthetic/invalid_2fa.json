@@ -1,0 +1,5 @@
+{"schema_version":"1.0","case_id":"invalid_2fa","transaction_reference":"TX-SYN-2FA","description":"Second-factor token is rejected","records":[
+  {"source_system":"payment_service","record_id":"pay-2fa-1","timestamp":"2026-08-20T10:10:00Z","event_type":"PAYMENT_CREATED","payload":{"state":"PENDING_AUTH"}},
+  {"source_system":"auth_service","record_id":"auth-2fa-1","timestamp":"2026-08-20T10:10:04Z","event_type":"AUTH_DECISION","payload":{"state":"DENIED","error_code":"INVALID_2FA_TOKEN","otp":"SYNTHETIC_OTP_SENTINEL"}},
+  {"source_system":"payment_service","record_id":"pay-2fa-2","timestamp":"2026-08-20T10:10:05Z","event_type":"PAYMENT_STATE","payload":{"state":"FAILED","reason_code":"INVALID_2FA_TOKEN"}}
+]}

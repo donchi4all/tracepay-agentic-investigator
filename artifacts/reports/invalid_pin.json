@@ -1,0 +1,119 @@
+{
+  "case_id": "invalid_pin",
+  "claims": [
+    {
+      "claim_id": "CLM-ROOT",
+      "classification": "INFERENCE",
+      "confidence": 0.98,
+      "contradicting_evidence_ids": [],
+      "statement": "The transaction failed because authentication rejected an invalid PIN.",
+      "supporting_evidence_ids": [
+        "EV-invalid_pin-002",
+        "EV-invalid_pin-003"
+      ],
+      "verification_status": "VERIFIED"
+    }
+  ],
+  "confidence": 0.98,
+  "contradictions": [],
+  "executive_summary": "The transaction failed because authentication rejected an invalid PIN. The conclusion is limited to the cited synthetic evidence.",
+  "generated_at": "2026-08-29T00:00:00Z",
+  "hypotheses": [
+    {
+      "confidence": 0.98,
+      "evidence_ids": [
+        "EV-invalid_pin-002",
+        "EV-invalid_pin-003"
+      ],
+      "failure_class": "INVALID_PIN",
+      "rationale": "Selected from correlated structural states and allow-listed failure-code fields."
+    }
+  ],
+  "impact": "Synthetic investigation only. No real customer, account, or financial impact is asserted.",
+  "metadata": {
+    "financial_actions_executed": 0,
+    "mode": "final",
+    "provider": "deterministic_local",
+    "security_findings": []
+  },
+  "missing_sources": [
+    "approval_workflow",
+    "mock_cba"
+  ],
+  "primary_failure_class": "INVALID_PIN",
+  "recommendations": [
+    {
+      "action": "Have a payment operations engineer review the cited evidence before any operational follow-up.",
+      "approval": "REQUIRES_HUMAN_APPROVAL",
+      "rationale": "TracePay is advisory and cannot change financial state."
+    },
+    {
+      "action": "Route the diagnosed class to the owning support team; any payment-state action requires separate review.",
+      "approval": "REQUIRES_HUMAN_APPROVAL",
+      "rationale": "TracePay is advisory and cannot change financial state."
+    }
+  ],
+  "rejected_claims": [],
+  "safety_notice": "REQUIRES_HUMAN_APPROVAL: TracePay is read-only. It did not and cannot execute a payment, retry, reversal, block, approval, customer contact, or state change.",
+  "schema_version": "1.0",
+  "timeline": [
+    {
+      "event_type": "PAYMENT_CREATED",
+      "evidence_id": "EV-invalid_pin-001",
+      "integrity": "sha256:efad3e96cf477607aca88b06bf7ea6c6534cd8240fe6b29418c66c5b630645ad#record=1",
+      "record_id": "pay-pin-1",
+      "sanitized_payload": {
+        "channel": "synthetic_web",
+        "state": "PENDING_AUTH"
+      },
+      "source_system": "payment_service",
+      "timestamp": "2026-08-20T10:00:00Z",
+      "transaction_reference": "TX-SYN-PIN"
+    },
+    {
+      "event_type": "AUTH_DECISION",
+      "evidence_id": "EV-invalid_pin-002",
+      "integrity": "sha256:efad3e96cf477607aca88b06bf7ea6c6534cd8240fe6b29418c66c5b630645ad#record=2",
+      "record_id": "auth-pin-1",
+      "sanitized_payload": {
+        "error_code": "INVALID_PIN",
+        "pin": "[REDACTED]",
+        "state": "DENIED",
+        "token": "[REDACTED]"
+      },
+      "source_system": "auth_service",
+      "timestamp": "2026-08-20T10:00:02Z",
+      "transaction_reference": "TX-SYN-PIN"
+    },
+    {
+      "event_type": "PAYMENT_STATE",
+      "evidence_id": "EV-invalid_pin-003",
+      "integrity": "sha256:efad3e96cf477607aca88b06bf7ea6c6534cd8240fe6b29418c66c5b630645ad#record=3",
+      "record_id": "pay-pin-2",
+      "sanitized_payload": {
+        "reason_code": "INVALID_PIN",
+        "state": "FAILED"
+      },
+      "source_system": "payment_service",
+      "timestamp": "2026-08-20T10:00:03Z",
+      "transaction_reference": "TX-SYN-PIN"
+    },
+    {
+      "event_type": "SEARCH_RESULT",
+      "evidence_id": "EV-invalid_pin-SEARCH",
+      "integrity": "sha256:efad3e96cf477607aca88b06bf7ea6c6534cd8240fe6b29418c66c5b630645ad",
+      "record_id": "search-invalid_pin",
+      "sanitized_payload": {
+        "case_id": "invalid_pin",
+        "matched_records": 3,
+        "read_only": true
+      },
+      "source_system": "fixture_repository",
+      "timestamp": "2026-08-29T00:00:00Z",
+      "transaction_reference": "TX-SYN-PIN"
+    }
+  ],
+  "trajectory_path": "trajectories/invalid_pin.jsonl",
+  "transaction_reference": "TX-SYN-PIN",
+  "unknowns": []
+}

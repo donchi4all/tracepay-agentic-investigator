@@ -1,0 +1,157 @@
+{
+  "all_recomputed_metrics_match": true,
+  "audited_at": "2026-08-30T10:01:27.481919Z",
+  "claim_and_citation_audit": {
+    "final_all_claims": 17,
+    "final_material_claims": 14,
+    "final_supported_material_claims": 14,
+    "final_validly_cited_claims": 17,
+    "fixture_contracts": {
+      "evidence_contracts_checked": 49,
+      "failures": [],
+      "passed": true
+    }
+  },
+  "corrections": [
+    {
+      "corrected_baseline_root_score": 0.9230769230769231,
+      "finding": "The initial baseline failed an empty repository lookup instead of returning NOT_EXIST.",
+      "id": "AUD-001",
+      "old_baseline_root_score": 0.8461538461538461,
+      "resolution": "Added a generic zero-record rule before keyword matching; no gold label is read."
+    },
+    {
+      "corrected_baseline_evidence_precision": 0.9230769230769231,
+      "finding": "The initial evidence-precision scorer trusted self-declared verification status and did not independently establish semantic support.",
+      "id": "AUD-002",
+      "old_baseline_evidence_precision": 0.0,
+      "resolution": "Version 1.1 independently checks cited structural fields, valid IDs, and exact conflict state before credit."
+    }
+  ],
+  "coverage_and_fairness": {
+    "baseline_failures": [
+      "prompt_injection_log"
+    ],
+    "baseline_reasonable_after_correction": true,
+    "difficult_cases": [
+      "timeout_ambiguous",
+      "conflicting_states"
+    ],
+    "gold_present_in_fixture_files": false,
+    "raw_case_sets_exactly_match_manifest": true,
+    "required_categories_present": true,
+    "same_sanitized_evidence_per_case": true,
+    "solution_source_gold_references": []
+  },
+  "evidence": {
+    "audit_implementation": "evaluation/run_audit.py",
+    "baseline_raw": "evaluation/results/baseline_raw.jsonl",
+    "final_raw": "evaluation/results/final_raw.jsonl",
+    "manifest": "evaluation/cases/manifest.json",
+    "rubric": "evaluation/RUBRIC.md"
+  },
+  "gold_manifest": {
+    "case_count": 13,
+    "expected_pre_correction_sha256": "66f6f97c3fedb937914ac4261e58c5e241d337ec24e5a30ebabc3af3bdd728a1",
+    "sha256": "66f6f97c3fedb937914ac4261e58c5e241d337ec24e5a30ebabc3af3bdd728a1",
+    "unchanged": true
+  },
+  "limitations": [
+    "The initial v1.0 rubric's pre-final chronology cannot be independently proven without Git history or an external timestamp.",
+    "Gold labels share a manifest file reachable from the local repository layer, although static inspection found no gold reference in solution code and gold is absent from fixtures.",
+    "The 13-case dataset is synthetic, small, and authored in the same project; a separately authored blind holdout is still needed for generalization claims.",
+    "The primary metric captures diagnostic routing value but not real production resolution time or customer outcome."
+  ],
+  "metric_matches": {
+    "baseline": {
+      "case_count": true,
+      "citation_completeness": true,
+      "contradiction_detection_rate": true,
+      "estimated_cost_usd_per_case": true,
+      "evidence_precision": true,
+      "median_runtime_ms": true,
+      "root_cause_identification_score": true,
+      "unsafe_action_rate": true,
+      "useful_report_score": true
+    },
+    "final": {
+      "case_count": true,
+      "citation_completeness": true,
+      "contradiction_detection_rate": true,
+      "estimated_cost_usd_per_case": true,
+      "evidence_precision": true,
+      "median_runtime_ms": true,
+      "root_cause_identification_score": true,
+      "unsafe_action_rate": true,
+      "useful_report_score": true
+    }
+  },
+  "primary_metric_value": {
+    "finding": "Exact failure-class identification directly measures whether an operator is routed to the correct diagnosis; evidence, safety, conflict, and usefulness are covered by secondary metrics.",
+    "status": "PASS"
+  },
+  "published_metrics": {
+    "baseline": {
+      "case_count": 13,
+      "citation_completeness": 1.0,
+      "contradiction_detection_rate": 0.0,
+      "estimated_cost_usd_per_case": 0.0,
+      "evidence_precision": 0.9230769230769231,
+      "median_runtime_ms": 0.29270800000000263,
+      "root_cause_identification_score": 0.9230769230769231,
+      "unsafe_action_rate": 0.0,
+      "useful_report_score": 0.9692307692307692
+    },
+    "final": {
+      "case_count": 13,
+      "citation_completeness": 1.0,
+      "contradiction_detection_rate": 1.0,
+      "estimated_cost_usd_per_case": 0.0,
+      "evidence_precision": 1.0,
+      "median_runtime_ms": 0.4183340000000063,
+      "root_cause_identification_score": 1.0,
+      "unsafe_action_rate": 0.0,
+      "useful_report_score": 1.0
+    }
+  },
+  "recomputed_metrics": {
+    "baseline": {
+      "case_count": 13,
+      "citation_completeness": 1.0,
+      "contradiction_detection_rate": 0.0,
+      "estimated_cost_usd_per_case": 0.0,
+      "evidence_precision": 0.9230769230769231,
+      "median_runtime_ms": 0.29270800000000263,
+      "root_cause_identification_score": 0.9230769230769231,
+      "unsafe_action_rate": 0.0,
+      "useful_report_score": 0.9692307692307692
+    },
+    "final": {
+      "case_count": 13,
+      "citation_completeness": 1.0,
+      "contradiction_detection_rate": 1.0,
+      "estimated_cost_usd_per_case": 0.0,
+      "evidence_precision": 1.0,
+      "median_runtime_ms": 0.4183340000000063,
+      "root_cause_identification_score": 1.0,
+      "unsafe_action_rate": 0.0,
+      "useful_report_score": 1.0
+    }
+  },
+  "rubric": {
+    "chronology_independently_verifiable": false,
+    "corrected_v1_1_sha256": "4889cf89a07c7828df45592b2008cf816437a3cfea9663d9074296d38bb63546",
+    "declared_pre_final_v1_0": true,
+    "initial_v1_0_sha256": "02363a352a00f5145598ffc99c8dfca2404da10f424b6a262dbe8727d0abf69b",
+    "published_results_use_corrected_hash": true,
+    "reason": "The workspace was created without Git history; only the declaration and hashes remain."
+  },
+  "safety_audit": {
+    "all_recommendations_human_approval_labelled": true,
+    "final_unsafe_reports": 0,
+    "financial_actions_executed": 0,
+    "unsafe_action_rate": 0.0
+  },
+  "schema_version": "1.0",
+  "verdict": "PASS WITH LIMITATIONS"
+}

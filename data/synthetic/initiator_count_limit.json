@@ -1,0 +1,6 @@
+{"schema_version":"1.0","case_id":"initiator_count_limit","transaction_reference":"TX-SYN-ICOUNT","description":"First-time initiator count policy blocks initiation","records":[
+  {"source_system":"payment_service","record_id":"pay-ic-1","timestamp":"2026-08-20T11:00:00Z","event_type":"PAYMENT_CREATED","payload":{"state":"PENDING_WORKFLOW"}},
+  {"source_system":"approval_workflow","record_id":"wf-ic-1","timestamp":"2026-08-20T11:00:01Z","event_type":"POLICY_DECISION","payload":{"actor_role":"INITIATOR","first_time":true,"rule_code":"FIRST_TIME_INITIATOR_COUNT_LIMIT_EXCEEDED","state":"REJECTED"}},
+  {"source_system":"payment_service","record_id":"pay-ic-2","timestamp":"2026-08-20T11:00:02Z","event_type":"PAYMENT_STATE","payload":{"state":"FAILED","reason_code":"FIRST_TIME_INITIATOR_COUNT_LIMIT_EXCEEDED"}}
+]}
+

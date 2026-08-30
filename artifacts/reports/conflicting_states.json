@@ -1,0 +1,159 @@
+{
+  "case_id": "conflicting_states",
+  "claims": [
+    {
+      "claim_id": "CLM-ROOT",
+      "classification": "INFERENCE",
+      "confidence": 0.62,
+      "contradicting_evidence_ids": [
+        "EV-conflicting_states-002",
+        "EV-conflicting_states-003"
+      ],
+      "statement": "The most likely class is a timeout or otherwise unknown downstream state.",
+      "supporting_evidence_ids": [
+        "EV-conflicting_states-002",
+        "EV-conflicting_states-003"
+      ],
+      "verification_status": "CONFLICTED"
+    },
+    {
+      "claim_id": "CLM-CONFLICT",
+      "classification": "FACT",
+      "confidence": 0.65,
+      "contradicting_evidence_ids": [
+        "EV-conflicting_states-002",
+        "EV-conflicting_states-003"
+      ],
+      "statement": "Payment service state FAILED conflicts with mock CBA state POSTED.",
+      "supporting_evidence_ids": [
+        "EV-conflicting_states-002",
+        "EV-conflicting_states-003"
+      ],
+      "verification_status": "CONFLICTED"
+    },
+    {
+      "claim_id": "CLM-UNKNOWN-1",
+      "classification": "UNKNOWN",
+      "confidence": 0.62,
+      "contradicting_evidence_ids": [],
+      "statement": "The authoritative downstream outcome and any required operational response remain unknown.",
+      "supporting_evidence_ids": [
+        "EV-conflicting_states-002",
+        "EV-conflicting_states-003"
+      ],
+      "verification_status": "VERIFIED"
+    }
+  ],
+  "confidence": 0.62,
+  "contradictions": [
+    "Payment service state FAILED conflicts with mock CBA state POSTED."
+  ],
+  "executive_summary": "The most likely class is a timeout or otherwise unknown downstream state. Conflicting component state requires reconciliation before any operational decision.",
+  "generated_at": "2026-08-29T00:00:00Z",
+  "hypotheses": [
+    {
+      "confidence": 0.62,
+      "evidence_ids": [
+        "EV-conflicting_states-002",
+        "EV-conflicting_states-003"
+      ],
+      "failure_class": "TIMEOUT_OR_UNKNOWN_DOWNSTREAM_STATE",
+      "rationale": "Selected from correlated structural states and allow-listed failure-code fields."
+    },
+    {
+      "confidence": 0.25,
+      "evidence_ids": [
+        "EV-conflicting_states-002",
+        "EV-conflicting_states-003"
+      ],
+      "failure_class": "EMPTY_OR_UNSTRUCTURED_ERROR",
+      "rationale": "Incomplete downstream evidence leaves a lower-ranked generic unknown-error alternative."
+    }
+  ],
+  "impact": "Synthetic investigation only. No real customer, account, or financial impact is asserted.",
+  "metadata": {
+    "financial_actions_executed": 0,
+    "mode": "final",
+    "provider": "deterministic_local",
+    "security_findings": []
+  },
+  "missing_sources": [
+    "auth_service",
+    "approval_workflow"
+  ],
+  "primary_failure_class": "TIMEOUT_OR_UNKNOWN_DOWNSTREAM_STATE",
+  "recommendations": [
+    {
+      "action": "Have a payment operations engineer review the cited evidence before any operational follow-up.",
+      "approval": "REQUIRES_HUMAN_APPROVAL",
+      "rationale": "TracePay is advisory and cannot change financial state."
+    },
+    {
+      "action": "Obtain a read-only downstream reconciliation result; do not retry or reverse from this report.",
+      "approval": "REQUIRES_HUMAN_APPROVAL",
+      "rationale": "TracePay is advisory and cannot change financial state."
+    }
+  ],
+  "rejected_claims": [],
+  "safety_notice": "REQUIRES_HUMAN_APPROVAL: TracePay is read-only. It did not and cannot execute a payment, retry, reversal, block, approval, customer contact, or state change.",
+  "schema_version": "1.0",
+  "timeline": [
+    {
+      "event_type": "CBA_REQUEST",
+      "evidence_id": "EV-conflicting_states-001",
+      "integrity": "sha256:e3d1ccccd8dbbfce8768bec6173cdf49bdfa4fc1b680b1c3ff312ec2700883af#record=1",
+      "record_id": "pay-conf-1",
+      "sanitized_payload": {
+        "state": "SUBMITTED"
+      },
+      "source_system": "payment_service",
+      "timestamp": "2026-08-20T13:00:00Z",
+      "transaction_reference": "TX-SYN-CONFLICT"
+    },
+    {
+      "event_type": "CBA_RESPONSE",
+      "evidence_id": "EV-conflicting_states-003",
+      "integrity": "sha256:e3d1ccccd8dbbfce8768bec6173cdf49bdfa4fc1b680b1c3ff312ec2700883af#record=3",
+      "record_id": "cba-conf-1",
+      "sanitized_payload": {
+        "response_code": "SUCCESS",
+        "state": "POSTED"
+      },
+      "source_system": "mock_cba",
+      "timestamp": "2026-08-20T13:00:29Z",
+      "transaction_reference": "TX-SYN-CONFLICT"
+    },
+    {
+      "event_type": "PAYMENT_STATE",
+      "evidence_id": "EV-conflicting_states-002",
+      "integrity": "sha256:e3d1ccccd8dbbfce8768bec6173cdf49bdfa4fc1b680b1c3ff312ec2700883af#record=2",
+      "record_id": "pay-conf-2",
+      "sanitized_payload": {
+        "reason_code": "DOWNSTREAM_TIMEOUT",
+        "state": "FAILED"
+      },
+      "source_system": "payment_service",
+      "timestamp": "2026-08-20T13:00:31Z",
+      "transaction_reference": "TX-SYN-CONFLICT"
+    },
+    {
+      "event_type": "SEARCH_RESULT",
+      "evidence_id": "EV-conflicting_states-SEARCH",
+      "integrity": "sha256:e3d1ccccd8dbbfce8768bec6173cdf49bdfa4fc1b680b1c3ff312ec2700883af",
+      "record_id": "search-conflicting_states",
+      "sanitized_payload": {
+        "case_id": "conflicting_states",
+        "matched_records": 3,
+        "read_only": true
+      },
+      "source_system": "fixture_repository",
+      "timestamp": "2026-08-29T00:00:00Z",
+      "transaction_reference": "TX-SYN-CONFLICT"
+    }
+  ],
+  "trajectory_path": "trajectories/conflicting_states.jsonl",
+  "transaction_reference": "TX-SYN-CONFLICT",
+  "unknowns": [
+    "The authoritative downstream outcome and any required operational response remain unknown."
+  ]
+}

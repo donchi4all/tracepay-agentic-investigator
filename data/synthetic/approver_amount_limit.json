@@ -1,0 +1,6 @@
+{"schema_version":"1.0","case_id":"approver_amount_limit","transaction_reference":"TX-SYN-AAMOUNT","description":"First-time approver amount policy blocks approval","records":[
+  {"source_system":"payment_service","record_id":"pay-aa-1","timestamp":"2026-08-20T11:20:00Z","event_type":"PAYMENT_STATE","payload":{"state":"PENDING_APPROVAL"}},
+  {"source_system":"approval_workflow","record_id":"wf-aa-1","timestamp":"2026-08-20T11:20:08Z","event_type":"POLICY_DECISION","payload":{"actor_role":"APPROVER","first_time":true,"rule_code":"FIRST_TIME_APPROVER_AMOUNT_LIMIT_EXCEEDED","state":"REJECTED"}},
+  {"source_system":"payment_service","record_id":"pay-aa-2","timestamp":"2026-08-20T11:20:09Z","event_type":"PAYMENT_STATE","payload":{"state":"FAILED","reason_code":"FIRST_TIME_APPROVER_AMOUNT_LIMIT_EXCEEDED"}}
+]}
+

@@ -1,0 +1,6 @@
+{"schema_version":"1.0","case_id":"empty_error_context","transaction_reference":"TX-SYN-EMPTY","description":"Failure record contains an empty error object and non-specific context","records":[
+  {"source_system":"payment_service","record_id":"pay-empty-1","timestamp":"2026-08-20T12:30:00Z","event_type":"PAYMENT_CREATED","payload":{"state":"PENDING_AUTH"}},
+  {"source_system":"auth_service","record_id":"auth-empty-1","timestamp":"2026-08-20T12:30:05Z","event_type":"AUTH_DECISION","payload":{"state":"DENIED","error":{},"reason":"authentication rejected without a structured code"}},
+  {"source_system":"payment_service","record_id":"pay-empty-2","timestamp":"2026-08-20T12:30:06Z","event_type":"PAYMENT_STATE","payload":{"state":"FAILED","error":{}}}
+]}
+

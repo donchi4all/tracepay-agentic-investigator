@@ -1,0 +1,41 @@
+$ /private/var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python -m unittest discover -s tests -v
+test_evidence_contract_and_fixture_are_read_only (test_collector.CollectorTests) ... ok
+test_hostile_log_is_flagged (test_collector.CollectorTests) ... ok
+test_malformed_record_without_fallback_is_skipped_not_invented (test_collector.CollectorTests) ... ok
+test_malformed_timestamp_uses_explicit_fallback_and_records_retry (test_collector.CollectorTests) ... ok
+test_conflicting_states_are_not_forced_to_false_certainty (test_diagnostic.DiagnosticTests) ... ok
+test_duplicate_events_remain_distinct_evidence (test_diagnostic.DiagnosticTests) ... ok
+test_empty_error_preserves_unknown (test_diagnostic.DiagnosticTests) ... ok
+test_missing_transaction_uses_search_evidence (test_diagnostic.DiagnosticTests) ... ok
+test_all_gold_classes_and_claim_contracts (test_end_to_end.EndToEndTests) ... ok
+test_prompt_injection_cannot_override_structural_auth_code (test_end_to_end.EndToEndTests) ... ok
+test_report_writes_markdown_json_and_observable_agents (test_end_to_end.EndToEndTests) ... ok
+test_timeline_is_sorted_despite_conflicting_source_order (test_end_to_end.EndToEndTests) ... ok
+test_evidence_support_is_independent_of_self_reported_status (test_evaluation_scoring.EvaluationScoringTests) ... ok
+test_fair_baseline_handles_zero_record_lookup (test_evaluation_scoring.EvaluationScoringTests) ... ok
+test_free_form_injection_text_is_not_structural_support (test_evaluation_scoring.EvaluationScoringTests) ... ok
+test_invalid_ids_and_generic_contradiction_do_not_receive_credit (test_evaluation_scoring.EvaluationScoringTests) ... ok
+test_prompt_injection_is_flagged_as_data (test_safety.SafetyTests) ... ok
+test_sensitive_keys_and_patterns_are_redacted (test_safety.SafetyTests) ... ok
+test_unsafe_requested_action_requires_label (test_safety.SafetyTests) ... ok
+test_01_fixtures_are_explicitly_synthetic_and_have_no_customer_or_production_data (test_security_controls.SecurityControlTests) ... ok
+test_02_sensitive_fixture_fields_are_non_secret_sentinels_and_no_accounts_exist (test_security_controls.SecurityControlTests) ... ok
+test_03_prompt_injection_log_cannot_control_final_diagnosis_or_citations (test_security_controls.SecurityControlTests) ... ok
+test_04_fixture_adapter_is_read_only_for_every_case (test_security_controls.SecurityControlTests) ... ok
+test_05_runtime_has_no_external_or_financial_mutation_capability (test_security_controls.SecurityControlTests) ... ok
+test_06_sensitive_values_are_redacted_before_evidence_and_reports (test_security_controls.SecurityControlTests) ... ok
+test_07_ambiguous_downstream_state_is_not_forced_to_failed_or_successful (test_security_controls.SecurityControlTests) ... ok
+test_08_every_consequential_recommendation_requires_human_approval (test_security_controls.SecurityControlTests) ... ok
+test_09_dependencies_and_licences_are_declared (test_security_controls.SecurityControlTests) ... ok
+test_10_trajectories_redact_secrets_pii_log_text_and_local_paths (test_security_controls.SecurityControlTests) ... ok
+test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders (test_security_controls.SecurityControlTests) ... ok
+test_baseline_is_functional_and_safe (test_validation_and_baseline.ValidationAndBaselineTests) ... ok
+test_dataset_is_frozen_diverse_and_synthetic (test_validation_and_baseline.ValidationAndBaselineTests) ... ok
+test_gold_labels_are_not_present_in_baseline_input (test_validation_and_baseline.ValidationAndBaselineTests) ... ok
+test_missing_citation_is_rejected (test_verifier.VerifierTests) ... ok
+test_semantically_unsupported_claim_is_rejected_even_with_valid_id (test_verifier.VerifierTests) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.058s
+
+OK
