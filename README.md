@@ -4,7 +4,7 @@ TracePay is a complete, local, deterministic agent workflow for investigating fa
 
 It is not a chatbot and it never moves money. TracePay reads only repository fixtures, treats log text as untrusted data, verifies every material conclusion, and labels every proposed follow-up `REQUIRES_HUMAN_APPROVAL`.
 
-Judges: start with the structured [`docs/HACKATHON_REPORT.md`](docs/HACKATHON_REPORT.md). The sanitized public-clone terminal transcript is supporting appendix evidence, not the primary report.
+Judges: start with the independent [`docs/FINAL_COMPETITION_READINESS.md`](docs/FINAL_COMPETITION_READINESS.md), which audited public commit `2457d07` from a fresh clone and awarded **87/100 — READY WITH LIMITATIONS**. The earlier 91/100 in the submission checklist is explicitly a repository self-assessment, not the independent score. Then use [`docs/HACKATHON_REPORT.md`](docs/HACKATHON_REPORT.md) for the presentation narrative. The sanitized public-clone terminal transcript is supporting appendix evidence, not the primary report.
 
 ## User, bottleneck, and value
 
@@ -24,7 +24,7 @@ Rubric v1.0 was declared before the initial final run; audit-corrected v1.1 was 
 | Contradiction detection | 0% | **100%** |
 | Useful-report score | 96.92% | **100%** |
 | Unsafe action rate | **0%** | **0%** |
-| Median runtime on recorded clean-venv run | 0.30 ms | 0.40 ms |
+| Median runtime on recorded clean-venv run | 0.31 ms | 0.42 ms |
 | Provider cost per case | $0.00 | $0.00 |
 
 Sources: [`evaluation/results/baseline.json`](evaluation/results/baseline.json), [`evaluation/results/final.json`](evaluation/results/final.json), and raw case-level JSONL beside each summary. Runtime is environment-dependent; cost excludes local CPU/electricity.
@@ -57,7 +57,7 @@ make audit
 make reproduce-all
 ```
 
-Expected highlights are `case_count: 13`, `Ran 35 tests ... OK`, the focused hostile review `Ran 11 tests ... OK`, baseline root-cause score `0.9230769230769231`, final score `1.0`, audit verdict `PASS WITH LIMITATIONS`, and unsafe-action rate `0.0`. Allow approximately 1–5 seconds on a typical local host. Provider cost is $0.00.
+Expected highlights are `case_count: 13`, `Ran 36 tests ... OK`, the focused hostile review `Ran 11 tests ... OK`, baseline root-cause score `0.9230769230769231`, final score `1.0`, audit verdict `PASS WITH LIMITATIONS`, and unsafe-action rate `0.0`. Allow approximately 1–5 seconds on a typical local host. Provider cost is $0.00.
 
 ## Baseline and agent architecture
 
@@ -106,6 +106,8 @@ All evidence is authored synthetic JSON accessed through a read-only fixture ada
 - `trajectories/`: observable agent instructions, actions, tool responses, feedback, retry, and checkpoint events—never hidden chain-of-thought.
 - `artifacts/`: generated reports and phase acceptance evidence.
 - `docs/`: architecture, decisions, security, reproduction, demo, and submission evidence.
+
+Report timestamps are deterministic evidence snapshots: the latest normalized synthetic event timestamp, or the dataset freeze timestamp for an empty lookup. They are not represented as wall-clock execution time.
 
 ## Scope and provenance
 

@@ -1,7 +1,7 @@
 # TracePay incident report: invalid_pin
 
-**Synthetic transaction:** `TX-SYN-PIN`  
-**Generated:** 2026-08-29T00:00:00Z  
+**Synthetic transaction:** `TX-SYN-PIN`<br>
+**Evidence snapshot:** 2026-08-20T10:00:03Z<br>
 **Primary assessment:** `INVALID_PIN` (98% confidence)
 
 ## Executive summary
@@ -27,7 +27,7 @@ Synthetic investigation only. No real customer, account, or financial impact is 
 | 2026-08-20T10:00:00Z | payment_service | PAYMENT_CREATED | PENDING_AUTH | `EV-invalid_pin-001` |
 | 2026-08-20T10:00:02Z | auth_service | AUTH_DECISION | DENIED | `EV-invalid_pin-002` |
 | 2026-08-20T10:00:03Z | payment_service | PAYMENT_STATE | FAILED | `EV-invalid_pin-003` |
-| 2026-08-29T00:00:00Z | fixture_repository | SEARCH_RESULT | 3 | `EV-invalid_pin-SEARCH` |
+| 2026-08-20T10:00:03Z | fixture_repository | SEARCH_RESULT | 3 | `EV-invalid_pin-SEARCH` |
 
 ## Contradictions
 

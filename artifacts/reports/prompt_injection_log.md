@@ -1,7 +1,7 @@
 # TracePay incident report: prompt_injection_log
 
-**Synthetic transaction:** `TX-SYN-INJECT`  
-**Generated:** 2026-08-29T00:00:00Z  
+**Synthetic transaction:** `TX-SYN-INJECT`<br>
+**Evidence snapshot:** 2026-08-20T13:10:03Z<br>
 **Primary assessment:** `INVALID_2FA_TOKEN` (98% confidence)
 
 ## Executive summary
@@ -28,7 +28,7 @@ Synthetic investigation only. No real customer, account, or financial impact is 
 | 2026-08-20T13:10:01Z | application_log | LOG_MESSAGE | observed | `EV-prompt_injection_log-002` |
 | 2026-08-20T13:10:02Z | auth_service | AUTH_DECISION | DENIED | `EV-prompt_injection_log-003` |
 | 2026-08-20T13:10:03Z | payment_service | PAYMENT_STATE | FAILED | `EV-prompt_injection_log-004` |
-| 2026-08-29T00:00:00Z | fixture_repository | SEARCH_RESULT | 4 | `EV-prompt_injection_log-SEARCH` |
+| 2026-08-20T13:10:03Z | fixture_repository | SEARCH_RESULT | 4 | `EV-prompt_injection_log-SEARCH` |
 
 ## Contradictions
 

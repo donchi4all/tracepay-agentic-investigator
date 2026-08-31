@@ -70,6 +70,7 @@ test_missing_transaction_uses_search_evidence (test_diagnostic.DiagnosticTests) 
 test_all_gold_classes_and_claim_contracts (test_end_to_end.EndToEndTests) ... ok
 test_prompt_injection_cannot_override_structural_auth_code (test_end_to_end.EndToEndTests) ... ok
 test_report_writes_markdown_json_and_observable_agents (test_end_to_end.EndToEndTests) ... ok
+test_reports_regenerate_deterministically_from_evidence_snapshot (test_end_to_end.EndToEndTests) ... ok
 test_timeline_is_sorted_despite_conflicting_source_order (test_end_to_end.EndToEndTests) ... ok
 test_evidence_support_is_independent_of_self_reported_status (test_evaluation_scoring.EvaluationScoringTests) ... ok
 test_fair_baseline_handles_zero_record_lookup (test_evaluation_scoring.EvaluationScoringTests) ... ok
@@ -96,7 +97,7 @@ test_missing_citation_is_rejected (test_verifier.VerifierTests) ... ok
 test_semantically_unsupported_claim_is_rejected_even_with_valid_id (test_verifier.VerifierTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 35 tests in 0.061s
+Ran 36 tests in 0.058s
 
 OK
 $ <VIRTUAL_ENV>/bin/python scripts/run_security_review.py
@@ -114,7 +115,7 @@ test_10_trajectories_and_shared_logs_redact_secrets_pii_and_local_paths (tests.t
 test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders (tests.test_security_controls.SecurityControlTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 11 tests in 0.067s
+Ran 11 tests in 0.044s
 
 OK
 $ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode baseline
@@ -124,8 +125,8 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode baseline
   "contradiction_detection_rate": 0.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 0.9230769230769231,
-  "executed_at": "2026-08-30T10:33:00.081479Z",
-  "median_runtime_ms": 0.3034999999999982,
+  "executed_at": "2026-08-31T03:27:26.163215Z",
+  "median_runtime_ms": 0.3083749999999996,
   "mode": "baseline",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 0.9230769230769231,
@@ -141,8 +142,8 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode stage1
   "contradiction_detection_rate": 0.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 0.0,
-  "executed_at": "2026-08-30T10:33:00.212949Z",
-  "median_runtime_ms": 0.3574999999999967,
+  "executed_at": "2026-08-31T03:27:26.293008Z",
+  "median_runtime_ms": 0.3815829999999909,
   "mode": "stage1",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 1.0,
@@ -158,8 +159,8 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode stage2
   "contradiction_detection_rate": 0.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 1.0,
-  "executed_at": "2026-08-30T10:33:00.360783Z",
-  "median_runtime_ms": 0.5372919999999948,
+  "executed_at": "2026-08-31T03:27:26.415505Z",
+  "median_runtime_ms": 0.4263750000000066,
   "mode": "stage2",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 1.0,
@@ -175,8 +176,8 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode stage3
   "contradiction_detection_rate": 1.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 1.0,
-  "executed_at": "2026-08-30T10:33:00.481455Z",
-  "median_runtime_ms": 0.39400000000000546,
+  "executed_at": "2026-08-31T03:27:26.543353Z",
+  "median_runtime_ms": 0.4030000000000006,
   "mode": "stage3",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 1.0,
@@ -192,8 +193,8 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode stage4_removed
   "contradiction_detection_rate": 1.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 0.2641509433962264,
-  "executed_at": "2026-08-30T10:33:00.607225Z",
-  "median_runtime_ms": 0.4273750000000076,
+  "executed_at": "2026-08-31T03:27:26.669957Z",
+  "median_runtime_ms": 0.41833300000000684,
   "mode": "stage4_removed",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 1.0,
@@ -209,8 +210,8 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode final
   "contradiction_detection_rate": 1.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 1.0,
-  "executed_at": "2026-08-30T10:33:00.727715Z",
-  "median_runtime_ms": 0.39575000000000027,
+  "executed_at": "2026-08-31T03:27:26.795004Z",
+  "median_runtime_ms": 0.4186250000000058,
   "mode": "final",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 1.0,
@@ -222,7 +223,7 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode final
 $ <VIRTUAL_ENV>/bin/python evaluation/run_audit.py
 {
   "all_recomputed_metrics_match": true,
-  "audited_at": "2026-08-30T10:33:00.805662Z",
+  "audited_at": "2026-08-31T03:27:26.885818Z",
   "claim_and_citation_audit": {
     "final_all_claims": 17,
     "final_material_claims": 14,
@@ -319,7 +320,7 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_audit.py
       "contradiction_detection_rate": 0.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 0.9230769230769231,
-      "median_runtime_ms": 0.3034999999999982,
+      "median_runtime_ms": 0.3083749999999996,
       "root_cause_identification_score": 0.9230769230769231,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 0.9692307692307692
@@ -330,7 +331,7 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_audit.py
       "contradiction_detection_rate": 1.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 1.0,
-      "median_runtime_ms": 0.39575000000000027,
+      "median_runtime_ms": 0.4186250000000058,
       "root_cause_identification_score": 1.0,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 1.0
@@ -343,7 +344,7 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_audit.py
       "contradiction_detection_rate": 0.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 0.9230769230769231,
-      "median_runtime_ms": 0.3034999999999982,
+      "median_runtime_ms": 0.3083749999999996,
       "root_cause_identification_score": 0.9230769230769231,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 0.9692307692307692
@@ -354,7 +355,7 @@ $ <VIRTUAL_ENV>/bin/python evaluation/run_audit.py
       "contradiction_detection_rate": 1.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 1.0,
-      "median_runtime_ms": 0.39575000000000027,
+      "median_runtime_ms": 0.4186250000000058,
       "root_cause_identification_score": 1.0,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 1.0
@@ -394,4 +395,4 @@ phase 5: PASS
 phase 6: PASS
 phase 7: PASS
 phase 8: PASS
-clean reproduction: PASS duration_seconds=2.166 provider_cost_usd=0.00
+clean reproduction: PASS duration_seconds=2.152 provider_cost_usd=0.00

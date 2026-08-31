@@ -2,6 +2,14 @@
 
 Every metric below comes from the frozen rubric and complete raw case outputs in `evaluation/results/`. No unsuccessful case or regression was removed.
 
+## Post-audit submission correction — 2026-08-31
+
+- **Independent result preserved:** a fresh-clone audit of public commit `2457d07` produced 66 PASS / 0 PARTIAL / 0 FAIL requirements, **87/100**, `READY WITH LIMITATIONS`, and `DEFENSIBLY AGENTIC`. Its Markdown, machine-readable evidence, judge Q&A, and human-action list are now retained without relabelling the earlier 91/100 self-assessment as independent.
+- **Privacy correction:** transcript validation now rejects any unsanitized shell-style `user@host ... %` prompt generically instead of embedding developer-specific username/hostname fragments. A hostile regression test covers an unrecognized workstation prompt.
+- **Timestamp correction:** report `generated_at` is now a deterministic evidence snapshot derived from the latest normalized synthetic event, with dataset-freeze fallback for empty lookups. Markdown labels it `Evidence snapshot`; metadata records the basis. A test proves repeated report objects and Markdown are identical.
+- **Integrity:** no gold label, case, rubric, scoring rule, diagnostic class, or historical independent-audit result was changed. Full regenerated results and timings are recorded after the final clean run.
+- **Decision:** KEEP because both changes remove independently identified privacy/polish weaknesses without broadening orchestration or changing evaluation targets.
+
 ## Submission evidence hardening — 2026-08-30
 
 - **Gap:** representative final trajectories showed the verification agent's instruction and aggregate tool response, but claim-level `verification_feedback` appeared only when a claim was rejected. Because the four representative final cases accept their structurally supported claims, the saved samples did not visibly demonstrate this feedback event.
@@ -25,7 +33,7 @@ Every metric below comes from the frozen rubric and complete raw case outputs in
 - **Finding SEC-001:** observable trajectories and report metadata exposed absolute developer workstation paths. Corrected by persisting repository-relative paths or filenames and applying defense-in-depth local-path redaction in the recorder.
 - **Finding SEC-002:** the build-only setuptools requirement was a version range. Corrected by pinning `setuptools==68.2.2`; runtime dependencies remain empty.
 - **Tests:** added 11 explicit controls covering synthetic-only data, credential sentinels, injection resistance, adapter immutability, absence of execution capability, redaction, uncertainty, approval labels, dependency/licence inventory, trajectory privacy, and `.env.example`.
-- **Current observed result:** focused review 11/11 passed in 0.067 s; full suite 35/35 passed in 0.061 s; clean reproduction passed in 2.166 s. Evidence is saved under `artifacts/phase-checks/`.
+- **Current observed result:** focused review 11/11 passed in 0.044 s; full suite 36/36 passed in 0.058 s; clean reproduction passed in 2.152 s. Evidence is saved under `artifacts/phase-checks/`.
 - **Residual risk:** regex scanning is not a DLP system, approval labels are not an authorization service, and any future LLM or production connector requires a new threat model.
 
 ## Independent audit correction — v1.1

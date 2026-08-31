@@ -172,7 +172,9 @@ class Coordinator:
             schema_version="1.0",
             case_id=case_id,
             transaction_reference=case["transaction_reference"],
-            generated_at="2026-08-29T00:00:00Z",
+            generated_at=next(
+                item.timestamp for item in evidence if item.event_type == "SEARCH_RESULT"
+            ),
             primary_failure_class=primary,
             confidence=confidence,
             executive_summary=summary,
@@ -195,6 +197,7 @@ class Coordinator:
                 "provider": "deterministic_local",
                 "security_findings": security_findings,
                 "financial_actions_executed": 0,
+                "generated_at_basis": "latest_synthetic_evidence_or_dataset_freeze",
             },
         )
         markdown_path: Optional[Path] = None

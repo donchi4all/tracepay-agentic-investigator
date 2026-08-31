@@ -96,13 +96,22 @@ class EvidenceCollector:
                 )
             )
 
+        # Use the latest normalized fixture event as the evidence snapshot.
+        # Empty lookups fall back to the frozen dataset timestamp. This keeps
+        # regenerated reports deterministic without pretending a fixed value is
+        # the wall-clock execution time.
+        snapshot_timestamp = (
+            max(item.timestamp for item in evidence)
+            if evidence
+            else self.repository.dataset_frozen_at()
+        )
         evidence.append(
             EvidenceItem(
                 evidence_id="EV-%s-SEARCH" % case_id,
                 source_system="fixture_repository",
                 record_id="search-%s" % case_id,
                 transaction_reference=reference,
-                timestamp="2026-08-29T00:00:00Z",
+                timestamp=snapshot_timestamp,
                 event_type="SEARCH_RESULT",
                 sanitized_payload={
                     "matched_records": len(evidence),
@@ -120,4 +129,3 @@ class EvidenceCollector:
             {"evidence_count": len(evidence), "security_findings": len(security_findings)},
         )
         return case, evidence, security_findings
-

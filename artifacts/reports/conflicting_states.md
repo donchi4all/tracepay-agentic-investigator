@@ -1,7 +1,7 @@
 # TracePay incident report: conflicting_states
 
-**Synthetic transaction:** `TX-SYN-CONFLICT`  
-**Generated:** 2026-08-29T00:00:00Z  
+**Synthetic transaction:** `TX-SYN-CONFLICT`<br>
+**Evidence snapshot:** 2026-08-20T13:00:31Z<br>
 **Primary assessment:** `TIMEOUT_OR_UNKNOWN_DOWNSTREAM_STATE` (62% confidence)
 
 ## Executive summary
@@ -30,7 +30,7 @@ Synthetic investigation only. No real customer, account, or financial impact is 
 | 2026-08-20T13:00:00Z | payment_service | CBA_REQUEST | SUBMITTED | `EV-conflicting_states-001` |
 | 2026-08-20T13:00:29Z | mock_cba | CBA_RESPONSE | POSTED | `EV-conflicting_states-003` |
 | 2026-08-20T13:00:31Z | payment_service | PAYMENT_STATE | FAILED | `EV-conflicting_states-002` |
-| 2026-08-29T00:00:00Z | fixture_repository | SEARCH_RESULT | 3 | `EV-conflicting_states-SEARCH` |
+| 2026-08-20T13:00:31Z | fixture_repository | SEARCH_RESULT | 3 | `EV-conflicting_states-SEARCH` |
 
 ## Contradictions
 

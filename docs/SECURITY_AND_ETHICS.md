@@ -105,9 +105,9 @@ The final observed commands and outputs are saved, not transcribed from expectat
 
 | Executed check | Actual result | Runtime |
 |---|---:|---:|
-| `make security-review` / 11 hostile control tests | **11 passed, 0 failed** | 0.067 s |
-| `make test` / complete regression suite | **35 passed, 0 failed** | 0.061 s |
-| `make reproduce-all` / isolated pip-free temporary venv | **PASS**, including local installation, validation, security review, evaluation, audit, reports, and eight phase checks | 2.166 s |
+| `make security-review` / 11 hostile control tests | **11 passed, 0 failed** | 0.044 s |
+| `make test` / complete regression suite | **36 passed, 0 failed** | 0.058 s |
+| `make reproduce-all` / isolated pip-free temporary venv | **PASS**, including local installation, validation, security review, evaluation, audit, reports, and eight phase checks | 2.152 s |
 | Post-generation secret/endpoint/path scan over fixtures, reports, evaluation results, and trajectories | **0 real credential, sentinel leak, endpoint, private-key, or developer-home-path matches** | <0.1 s |
 
 Data validation also reported 13 valid cases and `synthetic_only: true`. The focused suite hashes all fixture files before and after all 13 investigations and observed no mutation. These artifacts are in `artifacts/phase-checks/security-review.txt`, `tests.txt`, and `clean-reproduction.txt`.

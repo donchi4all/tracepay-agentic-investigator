@@ -94,7 +94,7 @@ def phase_5() -> Dict[str, Any]:
     report_path = ROOT / "artifacts" / "reports" / "invalid_pin.json"
     report_text = report_path.read_text(encoding="utf-8") if report_path.exists() else ""
     checks = {
-        "all_tests_pass": "Ran 35 tests" in test_output and "OK" in test_output,
+        "all_tests_pass": "Ran 36 tests" in test_output and "OK" in test_output,
         "redaction_observed": "[REDACTED]" in report_text,
         "sensitive_sentinel_absent": "SYNTHETIC_PIN_SENTINEL" not in report_text,
         "unsafe_actions_tested": "test_unsafe_requested_action_requires_label" in test_output,

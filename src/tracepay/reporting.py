@@ -64,8 +64,8 @@ def render_markdown(report: InvestigationReport) -> str:
 
     return """# TracePay incident report: {case_id}
 
-**Synthetic transaction:** `{transaction_reference}`  
-**Generated:** {generated_at}  
+**Synthetic transaction:** `{transaction_reference}`<br>
+**Evidence snapshot:** {generated_at}<br>
 **Primary assessment:** `{failure_class}` ({confidence:.0%} confidence)
 
 ## Executive summary

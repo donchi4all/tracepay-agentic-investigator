@@ -16,9 +16,19 @@ class FixtureRepository:
         self.data_dir = (self.project_root / "data" / "synthetic").resolve()
         self.manifest_path = self.project_root / "evaluation" / "cases" / "manifest.json"
 
-    def case_definitions(self) -> List[Dict[str, Any]]:
+    def _manifest(self) -> Dict[str, Any]:
         with self.manifest_path.open("r", encoding="utf-8") as handle:
-            return json.load(handle)["cases"]
+            return json.load(handle)
+
+    def case_definitions(self) -> List[Dict[str, Any]]:
+        return self._manifest()["cases"]
+
+    def dataset_frozen_at(self) -> str:
+        """Return the declared synthetic evidence snapshot timestamp."""
+        value = self._manifest().get("frozen_at")
+        if not isinstance(value, str):
+            raise FixtureError("Manifest frozen_at is missing")
+        return value
 
     def case_definition(self, case_id: str) -> Dict[str, Any]:
         matches = [case for case in self.case_definitions() if case["case_id"] == case_id]
@@ -44,4 +54,3 @@ class FixtureRepository:
     def integrity(self, case_id: str) -> str:
         raw = self.fixture_path(case_id).read_bytes()
         return "sha256:%s" % hashlib.sha256(raw).hexdigest()
-

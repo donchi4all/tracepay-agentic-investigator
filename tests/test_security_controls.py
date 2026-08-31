@@ -89,7 +89,14 @@ class SecurityControlTests(unittest.TestCase):
         }
         self.assertEqual(
             public_methods,
-            {"case_definition", "case_definitions", "fixture_path", "integrity", "load_case"},
+            {
+                "case_definition",
+                "case_definitions",
+                "dataset_frozen_at",
+                "fixture_path",
+                "integrity",
+                "load_case",
+            },
         )
 
     def test_05_runtime_has_no_external_or_financial_mutation_capability(self):
@@ -227,6 +234,11 @@ class SecurityControlTests(unittest.TestCase):
             self.assertNotIn("/private/var/folders/", sanitized_transcript)
             self.assertIn("<VIRTUAL_ENV>", sanitized_transcript)
             self.assertIn("<TEMP_DIR>", sanitized_transcript)
+
+            with self.assertRaises(ValueError):
+                sanitize_terminal_transcript(
+                    "operator@unrecognized-workstation another-repository % make test\n"
+                )
 
     def test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders(self):
         text = (ROOT / ".env.example").read_text(encoding="utf-8")

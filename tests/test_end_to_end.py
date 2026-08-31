@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from tracepay.coordinator import Coordinator
+from tracepay.reporting import render_markdown
 from tracepay.repository import FixtureRepository
 
 
@@ -79,6 +80,20 @@ class EndToEndTests(unittest.TestCase):
         report = Coordinator(ROOT).investigate("conflicting_states")[0]
         timestamps = [item["timestamp"] for item in report.timeline]
         self.assertEqual(timestamps, sorted(timestamps))
+
+    def test_reports_regenerate_deterministically_from_evidence_snapshot(self):
+        first = Coordinator(ROOT).investigate("invalid_pin")[0]
+        second = Coordinator(ROOT).investigate("invalid_pin")[0]
+        self.assertEqual(first.to_dict(), second.to_dict())
+        self.assertEqual(render_markdown(first), render_markdown(second))
+        self.assertEqual(first.generated_at, "2026-08-20T10:00:03Z")
+        self.assertEqual(
+            first.metadata["generated_at_basis"],
+            "latest_synthetic_evidence_or_dataset_freeze",
+        )
+
+        missing = Coordinator(ROOT).investigate("missing_transaction")[0]
+        self.assertEqual(missing.generated_at, "2026-08-29T00:00:00Z")
 
 
 if __name__ == "__main__":

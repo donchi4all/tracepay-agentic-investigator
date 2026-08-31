@@ -10,6 +10,7 @@ test_missing_transaction_uses_search_evidence (test_diagnostic.DiagnosticTests) 
 test_all_gold_classes_and_claim_contracts (test_end_to_end.EndToEndTests) ... ok
 test_prompt_injection_cannot_override_structural_auth_code (test_end_to_end.EndToEndTests) ... ok
 test_report_writes_markdown_json_and_observable_agents (test_end_to_end.EndToEndTests) ... ok
+test_reports_regenerate_deterministically_from_evidence_snapshot (test_end_to_end.EndToEndTests) ... ok
 test_timeline_is_sorted_despite_conflicting_source_order (test_end_to_end.EndToEndTests) ... ok
 test_evidence_support_is_independent_of_self_reported_status (test_evaluation_scoring.EvaluationScoringTests) ... ok
 test_fair_baseline_handles_zero_record_lookup (test_evaluation_scoring.EvaluationScoringTests) ... ok
@@ -36,6 +37,6 @@ test_missing_citation_is_rejected (test_verifier.VerifierTests) ... ok
 test_semantically_unsupported_claim_is_rejected_even_with_valid_id (test_verifier.VerifierTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 35 tests in 0.061s
+Ran 36 tests in 0.058s
 
 OK

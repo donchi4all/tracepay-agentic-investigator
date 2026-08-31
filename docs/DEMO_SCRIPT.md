@@ -58,4 +58,4 @@ Run or point to:
 make reproduce-all
 ```
 
-Show `artifacts/phase-checks/clean-reproduction.txt` and the eight PASS phase files. Close with the actual boundary: standard-library local execution, provider cost $0.00, no production connectors or load test, and a human still decides every consequential action.
+Show `artifacts/phase-checks/clean-reproduction.txt`, the eight PASS phase files, and the independent `87/100 — READY WITH LIMITATIONS` headline in `docs/FINAL_COMPETITION_READINESS.md`. If the earlier 91 appears, call it the historical repository self-assessment. Close with the actual boundary: standard-library local execution, provider cost $0.00, no production connectors or load test, and a human still decides every consequential action.

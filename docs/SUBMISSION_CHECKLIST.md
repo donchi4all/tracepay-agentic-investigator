@@ -1,8 +1,8 @@
 # Submission checklist and scorecard
 
-## Honest judge-style score: 91/100
+## Historical repository self-assessment: 91/100
 
-This is a repository self-assessment against the supplied weights, not a claim about an organizer's final score. Points are withheld where evidence is absent even when the limitation is intentional.
+This is a repository self-assessment against the supplied weights, not the independent result or a claim about an organizer's final score. The subsequent fresh-clone audit in `docs/FINAL_COMPETITION_READINESS.md` awarded **87/100 — READY WITH LIMITATIONS**; that is the score to present externally. Points below were withheld where evidence was absent even when the limitation is intentional.
 
 | Judging category | Max | Earned | Evidence-backed rationale |
 |---|---:|---:|---|
@@ -81,11 +81,11 @@ Do not add `.venv`, credentials, real data, production endpoints, or unrelated l
 
 | Command | Actual result | Saved evidence |
 |---|---|---|
-| `make test` | 35 passed, 0 failed; 0.061 s internal in the final clean run | `artifacts/phase-checks/tests.txt` |
-| `make security-review` | 11 passed, 0 failed; 0.067 s internal in the final clean run | `artifacts/phase-checks/security-review.txt` |
+| `make test` | 36 passed, 0 failed; 0.058 s internal in the final clean run | `artifacts/phase-checks/tests.txt` |
+| `make security-review` | 11 passed, 0 failed; 0.044 s internal in the final clean run | `artifacts/phase-checks/security-review.txt` |
 | `make evaluate-all` | Six modes × 13 raw cases; expected qualitative metrics unchanged | `evaluation/results/*.json`, `*_raw.jsonl` |
 | `make audit` | Every recomputed baseline/final metric matches; `PASS WITH LIMITATIONS` | `evaluation/results/audit.json` |
-| `make reproduce-all` | PASS in 2.166 s internally; reports, trajectories, and all eight phase checks regenerated | `artifacts/phase-checks/clean-reproduction.txt`, `phase-*.json` |
+| `make reproduce-all` | PASS in 2.152 s internally; reports, trajectories, and all eight phase checks regenerated | `artifacts/phase-checks/clean-reproduction.txt`, `phase-*.json` |
 
 ## Honest limitations
 

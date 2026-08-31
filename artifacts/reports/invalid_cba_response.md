@@ -1,7 +1,7 @@
 # TracePay incident report: invalid_cba_response
 
-**Synthetic transaction:** `TX-SYN-CBA`  
-**Generated:** 2026-08-29T00:00:00Z  
+**Synthetic transaction:** `TX-SYN-CBA`<br>
+**Evidence snapshot:** 2026-08-20T12:00:05Z<br>
 **Primary assessment:** `INVALID_CBA_RESPONSE_DATA` (98% confidence)
 
 ## Executive summary
@@ -27,7 +27,7 @@ Synthetic investigation only. No real customer, account, or financial impact is 
 | 2026-08-20T12:00:00Z | payment_service | CBA_REQUEST | SUBMITTED | `EV-invalid_cba_response-001` |
 | 2026-08-20T12:00:04Z | mock_cba | CBA_RESPONSE | REJECTED | `EV-invalid_cba_response-002` |
 | 2026-08-20T12:00:05Z | payment_service | PAYMENT_STATE | FAILED | `EV-invalid_cba_response-003` |
-| 2026-08-29T00:00:00Z | fixture_repository | SEARCH_RESULT | 3 | `EV-invalid_cba_response-SEARCH` |
+| 2026-08-20T12:00:05Z | fixture_repository | SEARCH_RESULT | 3 | `EV-invalid_cba_response-SEARCH` |
 
 ## Contradictions
 

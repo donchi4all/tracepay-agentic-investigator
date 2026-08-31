@@ -24,9 +24,9 @@ Last updated: 2026-08-30
 - [x] Phase 8: completed the scorecard, submission checklist, limitations, and 4:50 demo script.
 - [x] All eight acceptance checks passed; evidence is saved in `artifacts/phase-checks/`.
 - [x] Independent audit corrected the fair baseline and evidence scorer without changing gold answers, reran all modes, and saved a PASS WITH LIMITATIONS verdict.
-- [x] Hostile security review corrected local-path leakage and an unpinned build dependency; 11/11 focused and 35/35 total tests pass.
+- [x] Hostile security review corrected local-path leakage and an unpinned build dependency; 11/11 focused and 36/36 total tests pass.
 - [x] Verified from saved artifacts and executable phase checks that Phase 8 is the last genuinely completed build phase; all eight phase JSON files report PASS and their referenced evidence exists.
-- [x] Reproduced installation, validation, 35 tests, one baseline case, one final investigation, both complete evaluations, four reports, four trajectories, the audit, and all phase checks in a source-only temporary copy with an empty inherited environment.
+- [x] Reproduced installation, validation, the complete test suite, one baseline case, one final investigation, both complete evaluations, four reports, four trajectories, the audit, and all phase checks in a source-only temporary copy with an empty inherited environment.
 - [x] Corrected `make install` after the first judge run proved it was not importable without Make's temporary `PYTHONPATH`; the local offline installer now creates a venv-local source link and verifies a plain import.
 - [x] Removed the remaining `PYTHONPATH` and ambient-environment dependency from the clean runner, shell wrapper, and test launchers; the runner now installs into a pip-free venv before executing judged commands.
 - [x] Saved the judge-grade clean audit with exact versions, commands, expected/actual output, runtime, cost, defects, corrections, and limitations in `artifacts/phase-checks/reproducibility.md`.
@@ -34,6 +34,8 @@ Last updated: 2026-08-30
 - [x] Reconciled README, reproduction, security, changelog, and submission-checklist claims with the latest saved artifacts; final regression, focused security, evaluation audit, and phase checks pass.
 - [x] Added the structured judge-facing hackathon report and made the verification feedback loop visible with claim-level input/output confidence.
 - [x] Sanitized the supplied public-clone transcript and hardened future install, test, security, and clean-reproduction logs against workstation, virtual-environment, and temporary-path leakage.
+- [x] Preserved the independent fresh-clone 87/100 READY WITH LIMITATIONS audit and its machine-readable evidence as an audit of public commit `2457d07`.
+- [x] Replaced developer-specific transcript markers with generic prompt detection and replaced the fixed report date with a deterministic evidence-derived snapshot timestamp, with regression tests.
 
 ## Blocked
 

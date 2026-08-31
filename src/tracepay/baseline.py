@@ -79,7 +79,9 @@ def run_baseline(project_root: Path, case_id: str) -> Dict[str, Any]:
         "schema_version": "1.0-baseline",
         "case_id": case_id,
         "transaction_reference": case["transaction_reference"],
-        "generated_at": "2026-08-29T00:00:00Z",
+        "generated_at": next(
+            item.timestamp for item in evidence if item.event_type == "SEARCH_RESULT"
+        ),
         "primary_failure_class": predicted.value,
         "confidence": claim["confidence"],
         "executive_summary": claim["statement"],
@@ -111,5 +113,6 @@ def run_baseline(project_root: Path, case_id: str) -> Dict[str, Any]:
             "mode": "baseline",
             "provider": "deterministic_keyword",
             "financial_actions_executed": 0,
+            "generated_at_basis": "latest_synthetic_evidence_or_dataset_freeze",
         },
     }

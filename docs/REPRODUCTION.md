@@ -29,7 +29,7 @@ Expected highlights:
 
 ```text
 dataset: valid=true, case_count=13
-tests: Ran 35 tests ... OK
+tests: Ran 36 tests ... OK
 security review: Ran 11 tests ... OK
 baseline root_cause_identification_score: 0.9230769230769231
 final root_cause_identification_score: 1.0
@@ -38,7 +38,7 @@ audit verdict: PASS WITH LIMITATIONS
 clean reproduction: PASS
 ```
 
-The latest saved repository run took 2.166 seconds internally after adding the pip-free inner installation step; the final source-only judge rerun took 2.231 seconds internally (2.27 seconds outer wall time). Allow approximately 1–5 seconds on a typical local host. Timing metrics may move across hosts; accuracy and safety metrics must match exactly.
+The latest saved repository run took 2.152 seconds internally after adding the deterministic evidence-snapshot regression; the independent source-only audit of commit `2457d07` took 2.193 seconds internally (2.23 seconds outer wall time). Allow approximately 1–5 seconds on a typical local host. Timing metrics may move across hosts; accuracy and safety metrics must match exactly.
 
 ## Judge-grade source-only procedure
 

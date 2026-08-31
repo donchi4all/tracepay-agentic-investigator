@@ -30,6 +30,9 @@ class FakeRepository:
     def integrity(self, case_id):
         return "sha256:synthetic"
 
+    def dataset_frozen_at(self):
+        return "2026-08-29T00:00:00Z"
+
 
 class CollectorTests(unittest.TestCase):
     def setUp(self):
@@ -87,4 +90,3 @@ class CollectorTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

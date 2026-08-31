@@ -12,6 +12,6 @@ test_10_trajectories_and_shared_logs_redact_secrets_pii_and_local_paths (tests.t
 test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders (tests.test_security_controls.SecurityControlTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 11 tests in 0.067s
+Ran 11 tests in 0.044s
 
 OK

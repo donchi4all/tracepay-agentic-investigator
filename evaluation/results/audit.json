@@ -1,6 +1,6 @@
 {
   "all_recomputed_metrics_match": true,
-  "audited_at": "2026-08-30T10:33:00.805662Z",
+  "audited_at": "2026-08-31T03:27:26.885818Z",
   "claim_and_citation_audit": {
     "final_all_claims": 17,
     "final_material_claims": 14,
@@ -97,7 +97,7 @@
       "contradiction_detection_rate": 0.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 0.9230769230769231,
-      "median_runtime_ms": 0.3034999999999982,
+      "median_runtime_ms": 0.3083749999999996,
       "root_cause_identification_score": 0.9230769230769231,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 0.9692307692307692
@@ -108,7 +108,7 @@
       "contradiction_detection_rate": 1.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 1.0,
-      "median_runtime_ms": 0.39575000000000027,
+      "median_runtime_ms": 0.4186250000000058,
       "root_cause_identification_score": 1.0,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 1.0
@@ -121,7 +121,7 @@
       "contradiction_detection_rate": 0.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 0.9230769230769231,
-      "median_runtime_ms": 0.3034999999999982,
+      "median_runtime_ms": 0.3083749999999996,
       "root_cause_identification_score": 0.9230769230769231,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 0.9692307692307692
@@ -132,7 +132,7 @@
       "contradiction_detection_rate": 1.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 1.0,
-      "median_runtime_ms": 0.39575000000000027,
+      "median_runtime_ms": 0.4186250000000058,
       "root_cause_identification_score": 1.0,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 1.0

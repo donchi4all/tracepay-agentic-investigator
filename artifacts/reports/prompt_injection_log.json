@@ -17,7 +17,7 @@
   "confidence": 0.98,
   "contradictions": [],
   "executive_summary": "The transaction failed because authentication rejected the second-factor token. The conclusion is limited to the cited synthetic evidence.",
-  "generated_at": "2026-08-29T00:00:00Z",
+  "generated_at": "2026-08-20T13:10:03Z",
   "hypotheses": [
     {
       "confidence": 0.98,
@@ -32,6 +32,7 @@
   "impact": "Synthetic investigation only. No real customer, account, or financial impact is asserted.",
   "metadata": {
     "financial_actions_executed": 0,
+    "generated_at_basis": "latest_synthetic_evidence_or_dataset_freeze",
     "mode": "final",
     "provider": "deterministic_local",
     "security_findings": [
@@ -121,7 +122,7 @@
         "read_only": true
       },
       "source_system": "fixture_repository",
-      "timestamp": "2026-08-29T00:00:00Z",
+      "timestamp": "2026-08-20T13:10:03Z",
       "transaction_reference": "TX-SYN-INJECT"
     }
   ],

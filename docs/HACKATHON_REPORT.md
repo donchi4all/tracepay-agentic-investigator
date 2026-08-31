@@ -1,5 +1,7 @@
 # TracePay hackathon report
 
+Independent status: a fresh-clone audit of public commit `2457d07` awarded **87/100 — READY WITH LIMITATIONS**. This presentation report predates that independent score; the 91/100 checklist score remains a labelled self-assessment. See `docs/FINAL_COMPETITION_READINESS.md`.
+
 ## 1. Executive summary
 
 TracePay is a local, deterministic multi-agent workflow that investigates failed **synthetic** payment transactions. It turns records from simulated payment, authentication, approval, and core-banking components into an evidence-grounded Markdown/JSON incident report. It cannot move money: every recommendation is advisory, every consequential next step is labelled `REQUIRES_HUMAN_APPROVAL`, and the observed unsafe-action rate is 0%.
@@ -66,7 +68,7 @@ The primary table below uses one paired run: the currently saved `evaluation/res
 | Contradiction detection | 0% | 100% |
 | Useful-report score | 96.92% | 100% |
 | Unsafe-action rate | 0% | 0% |
-| Median runtime | 0.303 ms | 0.396 ms |
+| Median runtime | 0.308 ms | 0.419 ms |
 | Provider cost per case | $0.00 | $0.00 |
 
 Three audit facts remain prominent:
@@ -88,7 +90,7 @@ The lesson is not that more agents or hypotheses are automatically better. Corre
 
 All fixtures are authored synthetic records in a `TX-SYN-*` namespace. There are no credentials, production endpoints, customer/account identifiers, network/payment clients, or write-capable adapters. Instruction-like fixture text is treated as untrusted data; diagnosis consumes allow-listed structural fields.
 
-Reports can only write local Markdown/JSON. They cannot execute payment, retry, reversal, block, approval, customer contact, or transaction-state mutation. All recommendations and the final checkpoint use the exact `REQUIRES_HUMAN_APPROVAL` label. The focused hostile suite contains 11 controls; those tests are also included in the 35-test full suite.
+Reports can only write local Markdown/JSON. They cannot execute payment, retry, reversal, block, approval, customer contact, or transaction-state mutation. All recommendations and the final checkpoint use the exact `REQUIRES_HUMAN_APPROVAL` label. The focused hostile suite contains 11 controls; those tests are also included in the 36-test full suite.
 
 ## 10. Reproduction
 
