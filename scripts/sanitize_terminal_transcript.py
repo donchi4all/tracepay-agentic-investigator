@@ -50,8 +50,13 @@ def sanitize(text: str) -> str:
         "<TEMP_DIR>",
         text,
     )
-    forbidden = ("/Users/", "/var/folders/", "/private/var/folders/", "donsoft@", "VFDT-")
+    forbidden = ("/Users/", "/var/folders/", "/private/var/folders/")
     remaining = [token for token in forbidden if token in text]
+    if re.search(
+        r"(?m)^(?!<USER>@<HOST>[ \t])[^ \t\r\n@]+@[^ \t\r\n@]+(?:[ \t]+[^\n%]+)?[ \t]+%",
+        text,
+    ):
+        remaining.append("<unsanitized-user-host-prompt>")
     if remaining:
         raise ValueError("Transcript still contains workstation markers: %s" % remaining)
     return text

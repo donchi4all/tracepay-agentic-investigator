@@ -228,6 +228,11 @@ class SecurityControlTests(unittest.TestCase):
             self.assertIn("<VIRTUAL_ENV>", sanitized_transcript)
             self.assertIn("<TEMP_DIR>", sanitized_transcript)
 
+            with self.assertRaises(ValueError):
+                sanitize_terminal_transcript(
+                    "operator@unrecognized-workstation another-repository % make test\n"
+                )
+
     def test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders(self):
         text = (ROOT / ".env.example").read_text(encoding="utf-8")
         assignments = [line for line in text.splitlines() if line and not line.startswith("#")]
