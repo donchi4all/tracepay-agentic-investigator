@@ -54,6 +54,8 @@ Every withheld point is accounted for below. None can be honestly recovered by e
 - `trajectories/` representative JSONL
 - `artifacts/reports/` and `artifacts/phase-checks/`
 - `artifacts/phase-checks/reproducibility.md` with the independent source-only judge rerun
+- `artifacts/phase-checks/public-clone-transcript.md` as sanitized supporting evidence, never the primary report
+- `docs/HACKATHON_REPORT.md` as the judge-facing narrative
 - all `docs/`
 
 Do not add `.venv`, credentials, real data, production endpoints, or unrelated local files.
@@ -73,16 +75,17 @@ Do not add `.venv`, credentials, real data, production endpoints, or unrelated l
 - [x] New-versus-pre-existing statement and component licences are documented.
 - [x] Clean reproduction and phase checks pass.
 - [x] A source-only copy with empty generated-output directories and sanitized inherited environment passes installation and full reproduction without `PYTHONPATH` or installed distributions.
+- [x] Public terminal evidence replaces user, host, repository, virtual-environment, and temporary paths with explicit placeholders.
 
 ## Final observed commands
 
 | Command | Actual result | Saved evidence |
 |---|---|---|
-| `make test` | 35 passed, 0 failed; 0.058 s internal in the final clean run | `artifacts/phase-checks/tests.txt` |
-| `make security-review` | 11 passed, 0 failed; 0.045 s internal in the final clean run | `artifacts/phase-checks/security-review.txt` |
+| `make test` | 35 passed, 0 failed; 0.061 s internal in the final clean run | `artifacts/phase-checks/tests.txt` |
+| `make security-review` | 11 passed, 0 failed; 0.067 s internal in the final clean run | `artifacts/phase-checks/security-review.txt` |
 | `make evaluate-all` | Six modes × 13 raw cases; expected qualitative metrics unchanged | `evaluation/results/*.json`, `*_raw.jsonl` |
 | `make audit` | Every recomputed baseline/final metric matches; `PASS WITH LIMITATIONS` | `evaluation/results/audit.json` |
-| `make reproduce-all` | PASS in 2.249 s internally; reports, trajectories, and all eight phase checks regenerated | `artifacts/phase-checks/clean-reproduction.txt`, `phase-*.json` |
+| `make reproduce-all` | PASS in 2.166 s internally; reports, trajectories, and all eight phase checks regenerated | `artifacts/phase-checks/clean-reproduction.txt`, `phase-*.json` |
 
 ## Honest limitations
 

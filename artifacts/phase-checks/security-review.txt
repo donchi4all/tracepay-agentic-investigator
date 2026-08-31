@@ -1,4 +1,4 @@
-$ /private/var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python -m unittest tests.test_security_controls -v
+$ <VIRTUAL_ENV>/bin/python -m unittest tests.test_security_controls -v
 test_01_fixtures_are_explicitly_synthetic_and_have_no_customer_or_production_data (tests.test_security_controls.SecurityControlTests) ... ok
 test_02_sensitive_fixture_fields_are_non_secret_sentinels_and_no_accounts_exist (tests.test_security_controls.SecurityControlTests) ... ok
 test_03_prompt_injection_log_cannot_control_final_diagnosis_or_citations (tests.test_security_controls.SecurityControlTests) ... ok
@@ -8,10 +8,10 @@ test_06_sensitive_values_are_redacted_before_evidence_and_reports (tests.test_se
 test_07_ambiguous_downstream_state_is_not_forced_to_failed_or_successful (tests.test_security_controls.SecurityControlTests) ... ok
 test_08_every_consequential_recommendation_requires_human_approval (tests.test_security_controls.SecurityControlTests) ... ok
 test_09_dependencies_and_licences_are_declared (tests.test_security_controls.SecurityControlTests) ... ok
-test_10_trajectories_redact_secrets_pii_log_text_and_local_paths (tests.test_security_controls.SecurityControlTests) ... ok
+test_10_trajectories_and_shared_logs_redact_secrets_pii_and_local_paths (tests.test_security_controls.SecurityControlTests) ... ok
 test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders (tests.test_security_controls.SecurityControlTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 11 tests in 0.045s
+Ran 11 tests in 0.067s
 
 OK

@@ -150,6 +150,12 @@ def phase_7() -> Dict[str, Any]:
         "representative_trajectories": all(path.exists() for path in paths),
         "all_agents_observable": expected_agents <= agents,
         "verification_feedback_saved": any(item["event"] == "verification_feedback" for item in events),
+        "verification_confidence_adjustment_saved": any(
+            item["event"] == "verification_feedback"
+            and item.get("details", {}).get("output_confidence", 1.0)
+            < item.get("details", {}).get("input_confidence", 0.0)
+            for item in events
+        ),
         "retry_correction_saved": any(item["event"] == "retry_success" for item in events),
         "human_checkpoint_saved": any(item["event"] == "human_checkpoint" for item in events),
         "clean_environment_run": clean_log.exists() and "clean reproduction started" in clean_log.read_text(),
@@ -169,6 +175,7 @@ def phase_8() -> Dict[str, Any]:
     demo = (ROOT / "docs" / "DEMO_SCRIPT.md").read_text(encoding="utf-8")
     checklist = (ROOT / "docs" / "SUBMISSION_CHECKLIST.md").read_text(encoding="utf-8")
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    judge_report_path = ROOT / "docs" / "HACKATHON_REPORT.md"
     demo_segments = [
         "problem, user, and value",
         "fair baseline",
@@ -191,11 +198,21 @@ def phase_8() -> Dict[str, Any]:
         "five_minute_demo": "Target length: 4 minutes 50 seconds" in demo
         and all(segment in demo for segment in demo_segments),
         "six_category_scorecard": all(category in checklist for category in score_categories),
+        "judge_report_saved": judge_report_path.exists()
+        and "Sanitized public-clone execution" in judge_report_path.read_text(encoding="utf-8"),
         "limitations_disclosed": "Honest limitations" in checklist,
         "submission_files_listed": "Files to submit" in checklist,
         "claims_link_to_artifacts": "evaluation/results/baseline.json" in readme and "evaluation/results/final.json" in readme,
     }
-    return _result("8-submission-video", checks, {"demo": "docs/DEMO_SCRIPT.md", "checklist": "docs/SUBMISSION_CHECKLIST.md"})
+    return _result(
+        "8-submission-video",
+        checks,
+        {
+            "checklist": "docs/SUBMISSION_CHECKLIST.md",
+            "demo": "docs/DEMO_SCRIPT.md",
+            "judge_report": "docs/HACKATHON_REPORT.md",
+        },
+    )
 
 
 def main() -> int:

@@ -38,14 +38,14 @@ audit verdict: PASS WITH LIMITATIONS
 clean reproduction: PASS
 ```
 
-The latest saved repository run took 2.249 seconds internally after adding the pip-free inner installation step; the final source-only judge rerun took 2.231 seconds internally (2.27 seconds outer wall time). Allow approximately 1–5 seconds on a typical local host. Timing metrics may move across hosts; accuracy and safety metrics must match exactly.
+The latest saved repository run took 2.166 seconds internally after adding the pip-free inner installation step; the final source-only judge rerun took 2.231 seconds internally (2.27 seconds outer wall time). Allow approximately 1–5 seconds on a typical local host. Timing metrics may move across hosts; accuracy and safety metrics must match exactly.
 
 ## Judge-grade source-only procedure
 
 The following starts with no cached result, hidden `.env`, prior virtual environment, inherited environment variable, or generated trajectory. It deliberately copies only source inputs and declared documentation:
 
 ```bash
-TRACEPAY_JUDGE_DIR=$(mktemp -d /tmp/tracepay-judge.XXXXXX)
+TRACEPAY_JUDGE_DIR=$(mktemp -d)
 mkdir -p "$TRACEPAY_JUDGE_DIR/source" "$TRACEPAY_JUDGE_DIR/home"
 rsync -a \
   --exclude '.venv/' --exclude '.env' --exclude '.git/' \

@@ -1,4 +1,4 @@
-$ /private/var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python -m unittest discover -s tests -v
+$ <VIRTUAL_ENV>/bin/python -m unittest discover -s tests -v
 test_evidence_contract_and_fixture_are_read_only (test_collector.CollectorTests) ... ok
 test_hostile_log_is_flagged (test_collector.CollectorTests) ... ok
 test_malformed_record_without_fallback_is_skipped_not_invented (test_collector.CollectorTests) ... ok
@@ -27,7 +27,7 @@ test_06_sensitive_values_are_redacted_before_evidence_and_reports (test_security
 test_07_ambiguous_downstream_state_is_not_forced_to_failed_or_successful (test_security_controls.SecurityControlTests) ... ok
 test_08_every_consequential_recommendation_requires_human_approval (test_security_controls.SecurityControlTests) ... ok
 test_09_dependencies_and_licences_are_declared (test_security_controls.SecurityControlTests) ... ok
-test_10_trajectories_redact_secrets_pii_log_text_and_local_paths (test_security_controls.SecurityControlTests) ... ok
+test_10_trajectories_and_shared_logs_redact_secrets_pii_and_local_paths (test_security_controls.SecurityControlTests) ... ok
 test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders (test_security_controls.SecurityControlTests) ... ok
 test_baseline_is_functional_and_safe (test_validation_and_baseline.ValidationAndBaselineTests) ... ok
 test_dataset_is_frozen_diverse_and_synthetic (test_validation_and_baseline.ValidationAndBaselineTests) ... ok
@@ -36,6 +36,6 @@ test_missing_citation_is_rejected (test_verifier.VerifierTests) ... ok
 test_semantically_unsupported_claim_is_rejected_even_with_valid_id (test_verifier.VerifierTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 35 tests in 0.058s
+Ran 35 tests in 0.061s
 
 OK

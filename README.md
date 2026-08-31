@@ -4,6 +4,8 @@ TracePay is a complete, local, deterministic agent workflow for investigating fa
 
 It is not a chatbot and it never moves money. TracePay reads only repository fixtures, treats log text as untrusted data, verifies every material conclusion, and labels every proposed follow-up `REQUIRES_HUMAN_APPROVAL`.
 
+Judges: start with the structured [`docs/HACKATHON_REPORT.md`](docs/HACKATHON_REPORT.md). The sanitized public-clone terminal transcript is supporting appendix evidence, not the primary report.
+
 ## User, bottleneck, and value
 
 - **User:** a payment operations engineer investigating one failed transaction at a time.
@@ -22,18 +24,26 @@ Rubric v1.0 was declared before the initial final run; audit-corrected v1.1 was 
 | Contradiction detection | 0% | **100%** |
 | Useful-report score | 96.92% | **100%** |
 | Unsafe action rate | **0%** | **0%** |
-| Median runtime on recorded clean-venv run | 0.29 ms | 0.42 ms |
+| Median runtime on recorded clean-venv run | 0.30 ms | 0.40 ms |
 | Provider cost per case | $0.00 | $0.00 |
 
 Sources: [`evaluation/results/baseline.json`](evaluation/results/baseline.json), [`evaluation/results/final.json`](evaluation/results/final.json), and raw case-level JSONL beside each summary. Runtime is environment-dependent; cost excludes local CPU/electricity.
 
 The highest-impact primary-metric change was structural evidence correlation (Stage 1), which moved root-cause accuracy from 92.31% to 100%. Claim verification (Stage 3) was the highest-impact enforcement change. Unconstrained hypothesis fan-out was removed after it added unsupported claims without improving accuracy.
 
-An independent audit corrected an unfair baseline omission and a self-attested evidence-precision calculation without changing gold answers. The audit verdict is **PASS WITH LIMITATIONS**; see [`evaluation/AUDIT.md`](evaluation/AUDIT.md) and [`evaluation/results/audit.json`](evaluation/results/audit.json).
+## Audit corrections—not hidden
+
+- The original baseline unfairly treated a zero-record lookup as an unstructured error. A generic, gold-independent absence rule corrected baseline accuracy from **84.62% (11/13)** to **92.31% (12/13)**.
+- Rubric v1.0 trusted self-declared verification status when scoring evidence precision. Audit-corrected v1.1 independently checks valid evidence IDs and allow-listed structural support; corrected baseline precision is 92.31% and final precision remains 100%.
+- The gold manifest did not change, but the workspace has no Git history or external timestamp that independently proves the original rubric chronology.
+
+These are reasons for the independent verdict **PASS WITH LIMITATIONS**, not footnotes to remove. See [`evaluation/AUDIT.md`](evaluation/AUDIT.md) and [`evaluation/results/audit.json`](evaluation/results/audit.json).
 
 ## Quick start
 
 Requirements: Python 3.9–3.12; no network, API key, package download, or paid service. Python 3.9.6 is the version recorded on the development host.
+
+`make install` is a deterministic, pip-free local installation: it creates an isolated virtual environment and registers this repository's `src` directory with a venv-local `.pth` source link. It does not build or install a wheel. A plain import smoke test fails the target if that source registration is not usable.
 
 ```bash
 make install
@@ -60,6 +70,12 @@ The final workflow uses five bounded roles:
 3. The diagnostic agent orders the timeline, reconciles component state, and emits ranked hypotheses plus typed FACT, INFERENCE, and UNKNOWN claims.
 4. The verifier checks citations and structural support, rejects unsupported conclusions, and lowers confidence for conflicts.
 5. The reporter writes Markdown and JSON with an explicit human checkpoint.
+
+### Why call this agentic?
+
+TracePay is deterministic rather than LLM-driven, but it is not one opaque classification function. The coordinator owns a plan and observable state; bounded agents receive typed inputs, invoke the read-only evidence tool, produce hypotheses/claims, challenge those claims, return feedback, retry malformed evidence normalization, and stop at a human approval boundary. Separating correlation from verification was measured: correlation created the one-case accuracy gain, while verification raised contradiction detection and prevents unsupported claims from entering the accepted report.
+
+The strongest feedback-loop example is `conflicting_states`: the reconciler emits a factual `FAILED`/`POSTED` conflict at 100% input confidence; the verifier marks it `CONFLICTED` and caps it at 65%. The overall diagnosis stays uncertain at 62%, and the reporter refuses to recommend retry or reversal. The saved trajectory records the input/output confidence and verification status without storing hidden chain-of-thought.
 
 Try the difficult case:
 

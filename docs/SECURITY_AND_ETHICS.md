@@ -41,7 +41,7 @@ Fixture payload is untrusted. Fixture file routing and deterministic code are in
 
 ### SEC-001 — absolute workstation paths in trajectories — corrected
 
-Severity: **Medium privacy**. Generated trajectory `tool_response` events and report metadata exposed `/Users/<local-user>/...`, revealing workstation identity and directory structure.
+Severity: **Medium privacy**. Generated trajectory `tool_response` events and report metadata exposed `<HOME>/...`, revealing workstation identity and directory structure.
 
 Correction: coordinator report paths are now repository-relative or reduced to a filename when external; reporter events persist filenames only; CLI output is relative; and `TrajectoryRecorder` independently redacts local home paths in all detail fields. The generated trajectories were regenerated. The control-specific test injects a fake macOS home path and verifies it is absent.
 
@@ -66,7 +66,7 @@ No credential, real-customer-data, production-endpoint, external mutation, unsaf
 | False certainty under timeout/conflict | Timeout and FAILED/POSTED conflict map to `TIMEOUT_OR_UNKNOWN_DOWNSTREAM_STATE`, retain UNKNOWN claims, and never assert transaction success/failure as authoritative. Conflict confidence is capped at 0.65. | `test_07_ambiguous_downstream_state_is_not_forced_to_failed_or_successful` |
 | Unreviewed consequential recommendation | Every recommendation and safety notice carries exact `REQUIRES_HUMAN_APPROVAL`; there is no execution callback. | `test_08_every_consequential_recommendation_requires_human_approval` |
 | Undocumented dependency/licence | Project and component licences and dependency roles are enumerated below; metadata pins the only build dependency. | `test_09_dependencies_and_licences_are_declared` |
-| Trajectory leak | Recorder applies defense-in-depth redaction; events store counts, IDs, class/state summaries, relative filenames, and concise rationales—not raw sensitive values or hidden reasoning. | `test_10_trajectories_redact_secrets_pii_log_text_and_local_paths` |
+| Trajectory or shared-log leak | Recorder applies defense-in-depth redaction; shared-log sanitizers replace project, venv, and temporary roots; events store counts, IDs, class/state summaries, relative filenames, and concise rationales—not raw sensitive values or hidden reasoning. | `test_10_trajectories_and_shared_logs_redact_secrets_pii_and_local_paths` |
 | Unsafe environment template | `.env.example` contains three non-secret local defaults, no secret-key variables, absolute paths, credentials, or endpoints. | `test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders` |
 
 ## Data and privacy analysis
@@ -105,9 +105,9 @@ The final observed commands and outputs are saved, not transcribed from expectat
 
 | Executed check | Actual result | Runtime |
 |---|---:|---:|
-| `make security-review` / 11 hostile control tests | **11 passed, 0 failed** | 0.045 s |
-| `make test` / complete regression suite | **35 passed, 0 failed** | 0.058 s |
-| `make reproduce-all` / isolated pip-free temporary venv | **PASS**, including local installation, validation, security review, evaluation, audit, reports, and eight phase checks | 2.249 s |
+| `make security-review` / 11 hostile control tests | **11 passed, 0 failed** | 0.067 s |
+| `make test` / complete regression suite | **35 passed, 0 failed** | 0.061 s |
+| `make reproduce-all` / isolated pip-free temporary venv | **PASS**, including local installation, validation, security review, evaluation, audit, reports, and eight phase checks | 2.166 s |
 | Post-generation secret/endpoint/path scan over fixtures, reports, evaluation results, and trajectories | **0 real credential, sentinel leak, endpoint, private-key, or developer-home-path matches** | <0.1 s |
 
 Data validation also reported 13 valid cases and `synthetic_only: true`. The focused suite hashes all fixture files before and after all 13 investigations and observed no mutation. These artifacts are in `artifacts/phase-checks/security-review.txt`, `tests.txt`, and `clean-reproduction.txt`.

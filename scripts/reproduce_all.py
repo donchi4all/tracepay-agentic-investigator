@@ -20,6 +20,23 @@ def append(message: str) -> None:
             handle.write("\n")
 
 
+def sanitize_log_output(value: str, python: Path) -> str:
+    """Replace ephemeral/local roots before output reaches a shared log."""
+    venv_root = python.parent.parent
+    temp_root = venv_root.parent
+    replacements = {
+        str(venv_root.resolve()): "<VIRTUAL_ENV>",
+        str(venv_root): "<VIRTUAL_ENV>",
+        str(temp_root.resolve()): "<TEMP_DIR>",
+        str(temp_root): "<TEMP_DIR>",
+        str(ROOT.resolve()): "<PROJECT_ROOT>",
+        str(ROOT): "<PROJECT_ROOT>",
+    }
+    for source in sorted(replacements, key=len, reverse=True):
+        value = value.replace(source, replacements[source])
+    return value
+
+
 def run(python: Path, arguments: list) -> None:
     # Do not inherit PYTHONPATH, user-site settings, credentials, provider
     # configuration, or any other ambient state into the judged subprocesses.
@@ -33,7 +50,9 @@ def run(python: Path, arguments: list) -> None:
     result = subprocess.run(
         command, cwd=str(ROOT), env=environment, text=True, capture_output=True
     )
-    block = "$ %s\n%s%s" % (" ".join(command), result.stdout, result.stderr)
+    block = sanitize_log_output(
+        "$ %s\n%s%s" % (" ".join(command), result.stdout, result.stderr), python
+    )
     print(block, end="")
     append(block)
     if result.returncode:

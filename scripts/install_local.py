@@ -21,7 +21,8 @@ def main() -> int:
         raise RuntimeError("No venv site-packages directory was found")
     destination = candidates[0] / "tracepay-local.pth"
     destination.write_text(str(source) + "\n", encoding="utf-8")
-    print("Installed TracePay source link: %s" % destination)
+    relative_destination = destination.resolve().relative_to(Path(sys.prefix).resolve())
+    print("Installed TracePay source link: <VIRTUAL_ENV>/%s" % relative_destination.as_posix())
     print("Runtime dependencies installed: 0")
     return 0
 

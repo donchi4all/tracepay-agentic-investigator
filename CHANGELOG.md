@@ -6,9 +6,10 @@ Every metric below comes from the frozen rubric and complete raw case outputs in
 
 - **Gap:** representative final trajectories showed the verification agent's instruction and aggregate tool response, but claim-level `verification_feedback` appeared only when a claim was rejected. Because the four representative final cases accept their structurally supported claims, the saved samples did not visibly demonstrate this feedback event.
 - **Change:** the verifier now records concise accept/conflict feedback containing only claim ID, structural-check outcome, and final verification status. Tests and Phase 7 require at least one saved `verification_feedback` event. This is observable process metadata, not hidden chain-of-thought.
-- **Presentation:** README now has explicit user/bottleneck/value, fair-baseline, safety, and limitations sections. The 4:50 demo has distinct timestamps for the final report, comparison, changelog, highest-impact change, removed experiment, insight, and limitation.
+- **Presentation:** README now has explicit user/bottleneck/value, fair-baseline, safety, installation-semantics, audit-correction, agentic-feedback, and limitations sections. `docs/HACKATHON_REPORT.md` follows the judge-facing narrative, the public-clone transcript is mechanically sanitized, and the 4:50 demo has distinct timestamps for the final report, comparison, changelog, highest-impact change, removed experiment, insight, and limitation.
 - **Evaluation impact:** no case, gold answer, fixture, diagnostic rule, prediction, report claim, or scoring formula changed. All evaluation modes are rerun below; expected qualitative metrics must remain identical.
 - **Decision:** KEEP because it closes an observability evidence gap without adding agent behavior or inflating measured results.
+- **Public-evidence privacy:** install, test, security, and clean-reproduction log producers now emit `<VIRTUAL_ENV>` / `<PROJECT_ROOT>` placeholders instead of developer or temporary interpreter paths. The captured public-clone appendix was also mechanically sanitized and checked for workstation markers.
 
 ## Judge-grade reproducibility correction — 2026-08-30
 
@@ -16,7 +17,7 @@ Every metric below comes from the frozen rubric and complete raw case outputs in
 - **Finding REPRO-002:** `scripts/reproduce_all.py` also injected `PYTHONPATH` and copied the ambient environment into its inner subprocesses. It used no third-party package, but this was weaker isolation than the reproduction contract promised.
 - **Correction:** added `scripts/install_local.py`, which refuses a global interpreter and writes one venv-local source link; `make install` now creates a pip-free venv and verifies a plain import. Make targets no longer inject `PYTHONPATH`. The all-in-one runner now performs the same local install in its inner pip-free venv and passes only `LANG`, `PATH`, `PYTHONDONTWRITEBYTECODE`, and `PYTHONNOUSERSITE` to judged subprocesses.
 - **Clean rerun:** a new source-only copy began with no `.venv`, `.env`, cached results, reports, phase checks, or trajectories and an `env -i` process environment. Installation took 2.50 s including host Xcode cache-path warnings; 35/35 tests passed; both 13-case evaluations matched the frozen quality and safety metrics; and full reproduction passed in 2.231 s internally (2.27 s outer wall time).
-- **Result integrity:** the correction changed no fixture, case, rubric, gold answer, diagnostic rule, baseline rule, or quality metric. Provider cost remains USD 0.00. Submission artifacts were regenerated after the observability change in a 2.249 s clean inner run.
+- **Result integrity:** the correction changed no fixture, case, rubric, gold answer, diagnostic rule, baseline rule, or quality metric. Provider cost remains USD 0.00. Submission artifacts were regenerated after the confidence-feedback change in a 2.166 s clean inner run.
 - **Evidence:** `artifacts/phase-checks/reproducibility.md`, `artifacts/phase-checks/clean-reproduction.txt`, and the summaries/raw outputs under `evaluation/results/`.
 
 ## Hostile security/privacy review
@@ -24,7 +25,7 @@ Every metric below comes from the frozen rubric and complete raw case outputs in
 - **Finding SEC-001:** observable trajectories and report metadata exposed absolute developer workstation paths. Corrected by persisting repository-relative paths or filenames and applying defense-in-depth local-path redaction in the recorder.
 - **Finding SEC-002:** the build-only setuptools requirement was a version range. Corrected by pinning `setuptools==68.2.2`; runtime dependencies remain empty.
 - **Tests:** added 11 explicit controls covering synthetic-only data, credential sentinels, injection resistance, adapter immutability, absence of execution capability, redaction, uncertainty, approval labels, dependency/licence inventory, trajectory privacy, and `.env.example`.
-- **Current observed result:** focused review 11/11 passed in 0.045 s; full suite 35/35 passed in 0.058 s; clean reproduction passed in 2.249 s. Evidence is saved under `artifacts/phase-checks/`.
+- **Current observed result:** focused review 11/11 passed in 0.067 s; full suite 35/35 passed in 0.061 s; clean reproduction passed in 2.166 s. Evidence is saved under `artifacts/phase-checks/`.
 - **Residual risk:** regex scanning is not a DLP system, approval labels are not an authorization service, and any future LLM or production connector requires a new threat model.
 
 ## Independent audit correction — v1.1

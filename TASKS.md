@@ -21,7 +21,7 @@ Last updated: 2026-08-30
 - [x] Phase 5: passed 20 unit, integration, end-to-end, privacy, and adversarial tests.
 - [x] Phase 6: evaluated all stages, retained evidence-supported changes, and removed speculative fan-out.
 - [x] Phase 7: passed clean isolated-venv reproduction and saved representative trajectories for every agent.
-- [x] Phase 8: completed the scorecard, submission checklist, limitations, and 4:40 demo script.
+- [x] Phase 8: completed the scorecard, submission checklist, limitations, and 4:50 demo script.
 - [x] All eight acceptance checks passed; evidence is saved in `artifacts/phase-checks/`.
 - [x] Independent audit corrected the fair baseline and evidence scorer without changing gold answers, reran all modes, and saved a PASS WITH LIMITATIONS verdict.
 - [x] Hostile security review corrected local-path leakage and an unpinned build dependency; 11/11 focused and 35/35 total tests pass.
@@ -32,6 +32,8 @@ Last updated: 2026-08-30
 - [x] Saved the judge-grade clean audit with exact versions, commands, expected/actual output, runtime, cost, defects, corrections, and limitations in `artifacts/phase-checks/reproducibility.md`.
 - [x] Regenerated all evaluation modes, reports, representative trajectories, test/security logs, audit output, and eight phase checks after the reproducibility correction.
 - [x] Reconciled README, reproduction, security, changelog, and submission-checklist claims with the latest saved artifacts; final regression, focused security, evaluation audit, and phase checks pass.
+- [x] Added the structured judge-facing hackathon report and made the verification feedback loop visible with claim-level input/output confidence.
+- [x] Sanitized the supplied public-clone transcript and hardened future install, test, security, and clean-reproduction logs against workstation, virtual-environment, and temporary-path leakage.
 
 ## Blocked
 

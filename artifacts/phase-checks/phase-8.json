@@ -2,13 +2,15 @@
   "checks": {
     "claims_link_to_artifacts": true,
     "five_minute_demo": true,
+    "judge_report_saved": true,
     "limitations_disclosed": true,
     "six_category_scorecard": true,
     "submission_files_listed": true
   },
   "details": {
     "checklist": "docs/SUBMISSION_CHECKLIST.md",
-    "demo": "docs/DEMO_SCRIPT.md"
+    "demo": "docs/DEMO_SCRIPT.md",
+    "judge_report": "docs/HACKATHON_REPORT.md"
   },
   "phase": "8-submission-video",
   "status": "PASS"

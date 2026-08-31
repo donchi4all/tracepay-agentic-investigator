@@ -11,6 +11,8 @@ from tracepay.coordinator import Coordinator
 from tracepay.repository import FixtureRepository
 from tracepay.safety import redact
 from tracepay.trajectory import TrajectoryRecorder
+from scripts.reproduce_all import sanitize_log_output
+from scripts.sanitize_terminal_transcript import sanitize as sanitize_terminal_transcript
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -165,7 +167,7 @@ class SecurityControlTests(unittest.TestCase):
         self.assertIn("Python Software Foundation License", security)
         self.assertIn("setuptools", security)
 
-    def test_10_trajectories_redact_secrets_pii_log_text_and_local_paths(self):
+    def test_10_trajectories_and_shared_logs_redact_secrets_pii_and_local_paths(self):
         with tempfile.TemporaryDirectory() as directory:
             base = Path(directory)
             trajectory = base / "trace.jsonl"
@@ -201,6 +203,31 @@ class SecurityControlTests(unittest.TestCase):
             self.assertNotIn("SYSTEM:", workflow_text)
             self.assertEqual(report.trajectory_path, "workflow.jsonl")
 
+            fake_python = (
+                Path("/private/var/folders/example/tracepay-clean-example")
+                / "venv"
+                / "bin"
+                / "python"
+            )
+            raw_log = "%s\n%s\n%s" % (ROOT, fake_python, fake_python.parents[2] / "scratch")
+            sanitized_log = sanitize_log_output(raw_log, fake_python)
+            self.assertNotIn(str(ROOT), sanitized_log)
+            self.assertNotIn("/private/var/folders/", sanitized_log)
+            self.assertIn("<PROJECT_ROOT>", sanitized_log)
+            self.assertIn("<VIRTUAL_ENV>", sanitized_log)
+            self.assertIn("<TEMP_DIR>", sanitized_log)
+
+            transcript = (
+                "user@host tracepay-agentic-investigator % make test\n"
+                "/Users/example/work/tracepay-agentic-investigator/.venv/bin/python\n"
+                "/private/var/folders/x/tracepay-clean-example/venv/bin/python\n"
+            )
+            sanitized_transcript = sanitize_terminal_transcript(transcript)
+            self.assertNotIn("/Users/", sanitized_transcript)
+            self.assertNotIn("/private/var/folders/", sanitized_transcript)
+            self.assertIn("<VIRTUAL_ENV>", sanitized_transcript)
+            self.assertIn("<TEMP_DIR>", sanitized_transcript)
+
     def test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders(self):
         text = (ROOT / ".env.example").read_text(encoding="utf-8")
         assignments = [line for line in text.splitlines() if line and not line.startswith("#")]
@@ -214,4 +241,3 @@ class SecurityControlTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

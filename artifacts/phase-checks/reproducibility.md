@@ -22,7 +22,7 @@ Before installation, the audit observed:
 - an `env -i` process containing only the explicitly supplied `HOME`, `TMPDIR`, `PATH`, and `LANG`, plus shell-created `PWD`, `SHLVL`, and `_` bookkeeping;
 - no network or package-index command.
 
-The final temporary source root was `/tmp/tracepay-submission.j5anjg/source`. It is recorded so the command evidence is exact; no result depends on that path.
+The final temporary source root is shown as `<TEMP_DIR>/source`. The captured host path was mechanically sanitized; no result depends on that path.
 
 ## Exact environment
 
@@ -74,8 +74,8 @@ Neither correction changed evaluation cases, fixture hashes, the gold manifest, 
 Every command below ran from the fresh temporary source root under:
 
 ```text
-env -i HOME=/tmp/tracepay-submission.j5anjg/home \
-  TMPDIR=/tmp/tracepay-submission.j5anjg/tmp \
+env -i HOME=<TEMP_DIR>/home \
+  TMPDIR=<TEMP_DIR>/tmp \
   PATH=/usr/bin:/bin:/usr/sbin:/sbin LANG=C.UTF-8
 ```
 

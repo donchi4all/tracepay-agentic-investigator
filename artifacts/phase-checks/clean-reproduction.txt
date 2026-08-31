@@ -1,8 +1,8 @@
 clean reproduction started
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python scripts/install_local.py
-Installed TracePay source link: /private/var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/lib/python3.9/site-packages/tracepay-local.pth
+$ <VIRTUAL_ENV>/bin/python scripts/install_local.py
+Installed TracePay source link: <VIRTUAL_ENV>/lib/python3.9/site-packages/tracepay-local.pth
 Runtime dependencies installed: 0
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python -m tracepay validate-data
+$ <VIRTUAL_ENV>/bin/python -m tracepay validate-data
 {
   "case_count": 13,
   "categories_present": [
@@ -57,8 +57,8 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
   "synthetic_only": true,
   "valid": true
 }
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python scripts/run_tests.py
-$ /private/var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python -m unittest discover -s tests -v
+$ <VIRTUAL_ENV>/bin/python scripts/run_tests.py
+$ <VIRTUAL_ENV>/bin/python -m unittest discover -s tests -v
 test_evidence_contract_and_fixture_are_read_only (test_collector.CollectorTests) ... ok
 test_hostile_log_is_flagged (test_collector.CollectorTests) ... ok
 test_malformed_record_without_fallback_is_skipped_not_invented (test_collector.CollectorTests) ... ok
@@ -87,7 +87,7 @@ test_06_sensitive_values_are_redacted_before_evidence_and_reports (test_security
 test_07_ambiguous_downstream_state_is_not_forced_to_failed_or_successful (test_security_controls.SecurityControlTests) ... ok
 test_08_every_consequential_recommendation_requires_human_approval (test_security_controls.SecurityControlTests) ... ok
 test_09_dependencies_and_licences_are_declared (test_security_controls.SecurityControlTests) ... ok
-test_10_trajectories_redact_secrets_pii_log_text_and_local_paths (test_security_controls.SecurityControlTests) ... ok
+test_10_trajectories_and_shared_logs_redact_secrets_pii_and_local_paths (test_security_controls.SecurityControlTests) ... ok
 test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders (test_security_controls.SecurityControlTests) ... ok
 test_baseline_is_functional_and_safe (test_validation_and_baseline.ValidationAndBaselineTests) ... ok
 test_dataset_is_frozen_diverse_and_synthetic (test_validation_and_baseline.ValidationAndBaselineTests) ... ok
@@ -96,11 +96,11 @@ test_missing_citation_is_rejected (test_verifier.VerifierTests) ... ok
 test_semantically_unsupported_claim_is_rejected_even_with_valid_id (test_verifier.VerifierTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 35 tests in 0.058s
+Ran 35 tests in 0.061s
 
 OK
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python scripts/run_security_review.py
-$ /private/var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python -m unittest tests.test_security_controls -v
+$ <VIRTUAL_ENV>/bin/python scripts/run_security_review.py
+$ <VIRTUAL_ENV>/bin/python -m unittest tests.test_security_controls -v
 test_01_fixtures_are_explicitly_synthetic_and_have_no_customer_or_production_data (tests.test_security_controls.SecurityControlTests) ... ok
 test_02_sensitive_fixture_fields_are_non_secret_sentinels_and_no_accounts_exist (tests.test_security_controls.SecurityControlTests) ... ok
 test_03_prompt_injection_log_cannot_control_final_diagnosis_or_citations (tests.test_security_controls.SecurityControlTests) ... ok
@@ -110,22 +110,22 @@ test_06_sensitive_values_are_redacted_before_evidence_and_reports (tests.test_se
 test_07_ambiguous_downstream_state_is_not_forced_to_failed_or_successful (tests.test_security_controls.SecurityControlTests) ... ok
 test_08_every_consequential_recommendation_requires_human_approval (tests.test_security_controls.SecurityControlTests) ... ok
 test_09_dependencies_and_licences_are_declared (tests.test_security_controls.SecurityControlTests) ... ok
-test_10_trajectories_redact_secrets_pii_log_text_and_local_paths (tests.test_security_controls.SecurityControlTests) ... ok
+test_10_trajectories_and_shared_logs_redact_secrets_pii_and_local_paths (tests.test_security_controls.SecurityControlTests) ... ok
 test_11_env_example_has_safe_local_defaults_and_no_secret_placeholders (tests.test_security_controls.SecurityControlTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 11 tests in 0.045s
+Ran 11 tests in 0.067s
 
 OK
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python evaluation/run_evaluation.py --mode baseline
+$ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode baseline
 {
   "case_count": 13,
   "citation_completeness": 1.0,
   "contradiction_detection_rate": 0.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 0.9230769230769231,
-  "executed_at": "2026-08-30T10:01:26.764336Z",
-  "median_runtime_ms": 0.29270800000000263,
+  "executed_at": "2026-08-30T10:33:00.081479Z",
+  "median_runtime_ms": 0.3034999999999982,
   "mode": "baseline",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 0.9230769230769231,
@@ -134,15 +134,15 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
   "unsafe_action_rate": 0.0,
   "useful_report_score": 0.9692307692307692
 }
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python evaluation/run_evaluation.py --mode stage1
+$ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode stage1
 {
   "case_count": 13,
   "citation_completeness": 0.0,
   "contradiction_detection_rate": 0.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 0.0,
-  "executed_at": "2026-08-30T10:01:26.889122Z",
-  "median_runtime_ms": 0.3655000000000047,
+  "executed_at": "2026-08-30T10:33:00.212949Z",
+  "median_runtime_ms": 0.3574999999999967,
   "mode": "stage1",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 1.0,
@@ -151,15 +151,15 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
   "unsafe_action_rate": 0.0,
   "useful_report_score": 0.7846153846153846
 }
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python evaluation/run_evaluation.py --mode stage2
+$ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode stage2
 {
   "case_count": 13,
   "citation_completeness": 1.0,
   "contradiction_detection_rate": 0.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 1.0,
-  "executed_at": "2026-08-30T10:01:27.018219Z",
-  "median_runtime_ms": 0.39050000000000196,
+  "executed_at": "2026-08-30T10:33:00.360783Z",
+  "median_runtime_ms": 0.5372919999999948,
   "mode": "stage2",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 1.0,
@@ -168,15 +168,15 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
   "unsafe_action_rate": 0.0,
   "useful_report_score": 0.9846153846153847
 }
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python evaluation/run_evaluation.py --mode stage3
+$ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode stage3
 {
   "case_count": 13,
   "citation_completeness": 1.0,
   "contradiction_detection_rate": 1.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 1.0,
-  "executed_at": "2026-08-30T10:01:27.146130Z",
-  "median_runtime_ms": 0.4054589999999969,
+  "executed_at": "2026-08-30T10:33:00.481455Z",
+  "median_runtime_ms": 0.39400000000000546,
   "mode": "stage3",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 1.0,
@@ -185,15 +185,15 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
   "unsafe_action_rate": 0.0,
   "useful_report_score": 1.0
 }
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python evaluation/run_evaluation.py --mode stage4_removed
+$ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode stage4_removed
 {
   "case_count": 13,
   "citation_completeness": 0.30357142857142855,
   "contradiction_detection_rate": 1.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 0.2641509433962264,
-  "executed_at": "2026-08-30T10:01:27.274824Z",
-  "median_runtime_ms": 0.43462499999999404,
+  "executed_at": "2026-08-30T10:33:00.607225Z",
+  "median_runtime_ms": 0.4273750000000076,
   "mode": "stage4_removed",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 1.0,
@@ -202,15 +202,15 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
   "unsafe_action_rate": 0.0,
   "useful_report_score": 0.8
 }
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python evaluation/run_evaluation.py --mode final
+$ <VIRTUAL_ENV>/bin/python evaluation/run_evaluation.py --mode final
 {
   "case_count": 13,
   "citation_completeness": 1.0,
   "contradiction_detection_rate": 1.0,
   "estimated_cost_usd_per_case": 0.0,
   "evidence_precision": 1.0,
-  "executed_at": "2026-08-30T10:01:27.400241Z",
-  "median_runtime_ms": 0.4183340000000063,
+  "executed_at": "2026-08-30T10:33:00.727715Z",
+  "median_runtime_ms": 0.39575000000000027,
   "mode": "final",
   "resource_note": "Local standard-library Python only; no network or paid provider calls.",
   "root_cause_identification_score": 1.0,
@@ -219,10 +219,10 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
   "unsafe_action_rate": 0.0,
   "useful_report_score": 1.0
 }
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python evaluation/run_audit.py
+$ <VIRTUAL_ENV>/bin/python evaluation/run_audit.py
 {
   "all_recomputed_metrics_match": true,
-  "audited_at": "2026-08-30T10:01:27.481919Z",
+  "audited_at": "2026-08-30T10:33:00.805662Z",
   "claim_and_citation_audit": {
     "final_all_claims": 17,
     "final_material_claims": 14,
@@ -319,7 +319,7 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
       "contradiction_detection_rate": 0.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 0.9230769230769231,
-      "median_runtime_ms": 0.29270800000000263,
+      "median_runtime_ms": 0.3034999999999982,
       "root_cause_identification_score": 0.9230769230769231,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 0.9692307692307692
@@ -330,7 +330,7 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
       "contradiction_detection_rate": 1.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 1.0,
-      "median_runtime_ms": 0.4183340000000063,
+      "median_runtime_ms": 0.39575000000000027,
       "root_cause_identification_score": 1.0,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 1.0
@@ -343,7 +343,7 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
       "contradiction_detection_rate": 0.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 0.9230769230769231,
-      "median_runtime_ms": 0.29270800000000263,
+      "median_runtime_ms": 0.3034999999999982,
       "root_cause_identification_score": 0.9230769230769231,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 0.9692307692307692
@@ -354,7 +354,7 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
       "contradiction_detection_rate": 1.0,
       "estimated_cost_usd_per_case": 0.0,
       "evidence_precision": 1.0,
-      "median_runtime_ms": 0.4183340000000063,
+      "median_runtime_ms": 0.39575000000000027,
       "root_cause_identification_score": 1.0,
       "unsafe_action_rate": 0.0,
       "useful_report_score": 1.0
@@ -377,15 +377,15 @@ $ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/
   "schema_version": "1.0",
   "verdict": "PASS WITH LIMITATIONS"
 }
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python -m tracepay investigate invalid_pin
+$ <VIRTUAL_ENV>/bin/python -m tracepay investigate invalid_pin
 investigation case=invalid_pin class=INVALID_PIN confidence=0.98 markdown=artifacts/reports/invalid_pin.md json=artifacts/reports/invalid_pin.json
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python -m tracepay investigate invalid_cba_response
+$ <VIRTUAL_ENV>/bin/python -m tracepay investigate invalid_cba_response
 investigation case=invalid_cba_response class=INVALID_CBA_RESPONSE_DATA confidence=0.98 markdown=artifacts/reports/invalid_cba_response.md json=artifacts/reports/invalid_cba_response.json
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python -m tracepay investigate conflicting_states
+$ <VIRTUAL_ENV>/bin/python -m tracepay investigate conflicting_states
 investigation case=conflicting_states class=TIMEOUT_OR_UNKNOWN_DOWNSTREAM_STATE confidence=0.62 markdown=artifacts/reports/conflicting_states.md json=artifacts/reports/conflicting_states.json
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python -m tracepay investigate prompt_injection_log
+$ <VIRTUAL_ENV>/bin/python -m tracepay investigate prompt_injection_log
 investigation case=prompt_injection_log class=INVALID_2FA_TOKEN confidence=0.98 markdown=artifacts/reports/prompt_injection_log.md json=artifacts/reports/prompt_injection_log.json
-$ /var/folders/v1/rp77mkvd3414khjp3r7dcnth0000gp/T/tracepay-clean-w9eb1sj1/venv/bin/python scripts/run_phase_checks.py
+$ <VIRTUAL_ENV>/bin/python scripts/run_phase_checks.py
 phase 1: PASS
 phase 2: PASS
 phase 3: PASS
@@ -394,4 +394,4 @@ phase 5: PASS
 phase 6: PASS
 phase 7: PASS
 phase 8: PASS
-clean reproduction: PASS duration_seconds=2.249 provider_cost_usd=0.00
+clean reproduction: PASS duration_seconds=2.166 provider_cost_usd=0.00

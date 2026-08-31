@@ -16,7 +16,8 @@ environment = {
 }
 command = [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"]
 result = subprocess.run(command, cwd=str(ROOT), env=environment, text=True, capture_output=True)
-output = "$ %s\n%s%s" % (" ".join(command), result.stdout, result.stderr)
+display_command = ["<VIRTUAL_ENV>/bin/python"] + command[1:]
+output = "$ %s\n%s%s" % (" ".join(display_command), result.stdout, result.stderr)
 artifact = ROOT / "artifacts" / "phase-checks" / "tests.txt"
 artifact.parent.mkdir(parents=True, exist_ok=True)
 artifact.write_text(output, encoding="utf-8")

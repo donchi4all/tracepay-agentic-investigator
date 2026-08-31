@@ -74,6 +74,7 @@ class VerificationAgent:
         rejected: List[DiagnosticClaim] = []
 
         for claim in claims:
+            input_confidence = claim.confidence
             support_valid = bool(claim.supporting_evidence_ids) and all(
                 item_id in known_ids for item_id in claim.supporting_evidence_ids
             )
@@ -88,7 +89,13 @@ class VerificationAgent:
                     "verification_feedback",
                     "Reject an unsupported material claim.",
                     "A citation is missing/invalid or allow-listed structural fields do not support the statement.",
-                    {"claim_id": claim.claim_id, "semantic_valid": semantic_valid},
+                    {
+                        "claim_id": claim.claim_id,
+                        "input_confidence": input_confidence,
+                        "output_confidence": claim.confidence,
+                        "semantic_valid": semantic_valid,
+                        "status": claim.verification_status.value,
+                    },
                 )
                 continue
             if claim.contradicting_evidence_ids:
@@ -104,6 +111,8 @@ class VerificationAgent:
                 "The cited evidence IDs exist and allow-listed structural fields support the statement.",
                 {
                     "claim_id": claim.claim_id,
+                    "input_confidence": input_confidence,
+                    "output_confidence": claim.confidence,
                     "semantic_valid": semantic_valid,
                     "status": claim.verification_status.value,
                 },

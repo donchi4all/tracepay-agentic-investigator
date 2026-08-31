@@ -5,6 +5,7 @@
     "human_checkpoint_saved": true,
     "representative_trajectories": true,
     "retry_correction_saved": true,
+    "verification_confidence_adjustment_saved": true,
     "verification_feedback_saved": true
   },
   "details": {

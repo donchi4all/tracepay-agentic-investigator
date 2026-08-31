@@ -65,6 +65,15 @@ class EndToEndTests(unittest.TestCase):
             )
             self.assertTrue(any(item["event"] == "human_checkpoint" for item in events))
             self.assertTrue(any(item["event"] == "verification_feedback" for item in events))
+            self.assertTrue(
+                any(
+                    item["event"] == "verification_feedback"
+                    and item["details"].get("status") == "CONFLICTED"
+                    and item["details"].get("output_confidence", 1.0)
+                    < item["details"].get("input_confidence", 0.0)
+                    for item in events
+                )
+            )
 
     def test_timeline_is_sorted_despite_conflicting_source_order(self):
         report = Coordinator(ROOT).investigate("conflicting_states")[0]
